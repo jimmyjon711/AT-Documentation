@@ -26,4 +26,4 @@ post-extruder gear sensor (`pin_tool_end`). Use these in the next step to proper
 If you do not have a native toolhead filament sensor, you can use either an inline filament sensor such
 as [Filatector](https://github.com/ArmoredTurtle/Filatector), or you can use
 the [TurtleNeck buffer](https://github.com/ArmoredTurtle/TurtleNeck) as a virtual toolhead endstop, please
-see [this guide](../../installation/buffer-ram-sensor.md) for more details.
+see [this guide](../../afc-klipper-add-on/installation/buffer-ram-sensor.md) for more details.

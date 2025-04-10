@@ -1,16 +1,14 @@
 site_name: Armored Turtle Documentation
 site_description: "Armored Turtle Project Documentation"
 site_url: https://armoredturtle.xyz/docs/
-repo_url: https://github.com/ArmoredTurtle/AFC-Documentation
-edit_uri: 'blob/dev-docs/documentation/'
-repo_name: ArmoredTurtle/AFC-Klipper-Add-On
+repo_url: https://github.com/ArmoredTurtle/AT-Documentation
+edit_uri: 'blob/main/docs/'
+repo_name: ArmoredTurtle/AT-Documentation
 use_directory_urls: False
-
 
 nav:
   - Home:
-      - Overview: index.md
-      - Features: features.md
+      - index.md
   - AFC-Klipper-Add-On:
       - Overview: afc-klipper-add-on/index.md
       - Features: afc-klipper-add-on/features.md
@@ -22,6 +20,8 @@ nav:
               - Install Menu: afc-klipper-add-on/installation/install-menu.md
               - Utilities Menu: afc-klipper-add-on/installation/utilities-menu.md
           - Uninstall Process: afc-klipper-add-on/installation/uninstall-process.md
+          - Buffer Overview: afc-klipper-add-on/installation/buffer-overview.md
+          - Buffer Ram Sensor: afc-klipper-add-on/installation/buffer-ram-sensor.md
       - Configuration:
           - Configuration Overview: afc-klipper-add-on/configuration/configuration_overview.md
           - Configuration Files:
@@ -29,20 +29,18 @@ nav:
               - AFC_Hardware.cfg: afc-klipper-add-on/configuration/AFC_Hardware.cfg.md
               - AFC_UnitType_1.cfg: afc-klipper-add-on/configuration/AFC_UnitType_1.cfg.md
               - AFC_Macro_Vars.cfg: afc-klipper-add-on/configuration/AFC_Macro_Vars.cfg.md
+      - Klipper Commands:
+          - Macro Overview: afc-klipper-add-on/klipper/macros.md
+          - Internal Macros:
+              - Spool Macros: afc-klipper-add-on/klipper/internal/spool.md
+              - Calibration Macros: afc-klipper-add-on/klipper/internal/calibration.md
+              - Tip Forming Macros: afc-klipper-add-on/klipper/internal/tip_forming.md
+              - Buffer Macros: afc-klipper-add-on/klipper/internal/buffer.md
+              - Lane / Movement Macros: afc-klipper-add-on/klipper/internal/lane.md
+              - Misc. Macros: afc-klipper-add-on/klipper/internal/misc.md
+          - External Macros: afc-klipper-add-on/klipper/external/macros.md
       - Configuration Examples: afc-klipper-add-on/configuration/configuration_examples.md
       - Calibration Process: afc-klipper-add-on/installation/calibration.md
-      #    - Commands:
-      #      - Macros:
-      #        - Macro Overview: afc-klipper-add-on/klipper/macros.md
-      #        - Internal Macros:
-      #          - Spool Macros: afc-klipper-add-on/klipper/internal/spool.md
-      #          - Calibration Macros: afc-klipper-add-on/klipper/internal/calibration.md
-      #          - Tip Forming Macros: afc-klipper-add-on/klipper/internal/tip_forming.md
-      #          - Buffer Macros: afc-klipper-add-on/klipper/internal/buffer.md
-      #          - Lane / Movement Macros: afc-klipper-add-on/klipper/internal/lane.md
-      #          - Misc. Macros: afc-klipper-add-on/klipper/internal/misc.md
-      #        - External Macros: afc-klipper-add-on/klipper/external/macros.md
-
   - BoxTurtle:
       - Overview: boxturtle/index.md
       - Initial Startup:
@@ -60,13 +58,7 @@ nav:
       - LDO Kit Errata: boxturtle/errata.md
       - BOM: boxturtle/bom.md
       - Wiring Guide: boxturtle/wiring-guide.md
-  - Turtleneck:
-      - Overview: turtleneck/index.md
-      - Turtleneck Overview: turtleneck/overview.md
-      - Turtleneck Wiring: turtleneck/wiring.md
-      - Turtleneck Assembly: turtleneck/assembly.md
-      - Turtleneck Calibration: turtleneck/calibration.md
-      - Turtleneck Troubleshooting: turtleneck/troubleshooting.md
+
   - AFC-Accessories:
       - Overview: afc-accessories/index.md
   - Troubleshooting:
@@ -75,7 +67,6 @@ nav:
   - Assembly Manual: https://armoredturtle.xyz
 
 draft_docs: |
-  _afc/README.md
   _unpublished.md 
 
 theme:
@@ -111,7 +102,7 @@ theme:
     - navigation.tabs # Adds tabbed navigation to top bar when screen > 1220px
     - navigation.tabs.sticky # Keep the tabbed navigation bar at the top of the screen when scrolling
     - navigation.tracking # Track the current page in the navigation bar
-    - navigation.expand # Start with all sections expanded
+    #- navigation.expand # Start with all sections expanded
     - navigation.path # Show the path to the current page at the top of the page
     - navigation.footer # adds next and previous buttons to the bottom of the page
     - toc.follow # Follow the table of contents when scrolling
@@ -124,13 +115,13 @@ plugins:
       hooks:
         on_post_page: "mkdoc_hooks:post_page"
         #on_serve: "mkdocs_hooks:force_reload"
-#  - mkdocstrings:
-#      default_handler: python
-#      handlers:
-#        python:
-#          options:
-#            show_source: false
-#          paths: [./AFC-Klipper-Add-On/extras/]
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: false
+          paths: [./AFC-Klipper-Add-On/extras/]
 
 
 markdown_extensions:

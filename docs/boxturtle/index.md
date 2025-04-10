@@ -1,6 +1,6 @@
 # BoxTurtle V1.0
 
-BoxTurtle Automated Filament Control (requires AFC-Klipper-Add-On (Beta))
+BoxTurtle Automated Filament Control (requires AFC-Klipper-Add-On)
 
 ![BT_Render](../assets/images/boxturtle-render.png)
 [![Join me on Discord](https://discord.com/api/guilds/1229586267671629945/widget.png?style=banner2)](https://discord.gg/eT8zc3bvPR)
@@ -67,7 +67,7 @@ Options include:
 
 - [FilamATrix](https://github.com/thunderkeys/FilamATrix)
 - [Filatector](https://github.com/ArmoredTurtle/Filatector)
-- [AFC Buffer Ram Sensor using TurtleNeck](../installation/buffer-ram-sensor.md)
+- [AFC Buffer Ram Sensor using TurtleNeck](../afc-klipper-add-on/installation/buffer-ram-sensor.md)
 
 ## Waste management
 

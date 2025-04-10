@@ -31,14 +31,14 @@ distance in order to slow the filament moving to the primary extruder.
 
 ### Turtleneck 1.0
 
-![Heading](../assets/images/turtleneck.png)
+![Heading](../../assets/images/turtleneck.png)
 
 
 ### TurtleNeck 2.0
 
 [__Flashing TurtleNeck 2.0__](https://github.com/ArmoredTurtle/TurtleNeck2.0/blob/main/Flashing/README.md)
 
-![image](../assets/images/turtleneckv2.png)
+![image](../../assets/images/turtleneckv2.png)
 
 ## Configuration
 
