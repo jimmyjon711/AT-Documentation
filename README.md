@@ -1,6 +1,6 @@
 ## Useful links:
 
-Mkdocs: https://www.mkdocs.org/user-guide/writing-your-docs/
+Mkdocs: https://www.mkdocs.org/user-guide/writing-your-docs/  
 Material for Mkdocs: https://squidfunk.github.io/mkdocs-material/
 
 ## Set up environment (venv)
@@ -33,3 +33,5 @@ mkdocs serve
 ```bash
 mkdocs build
 ```
+
+This repo also utilizes the `AFC-Klipper-Add-On` as a submodule. Ensure that it is properly initialized and updated.

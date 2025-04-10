@@ -4,3 +4,5 @@ site/
 .idea/
 .venv/
 __pycache__/
+site.tar.gz
+uv.lock

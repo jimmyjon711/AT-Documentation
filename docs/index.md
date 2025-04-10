@@ -1,3 +1,7 @@
+---
+Title: Armored Turtle Documentation
+---
+# Armored Turtle Documentation
 Welcome to the consolidated documentation site for Armored Turtle projects! This site is a work in progress and will 
 be updated as we continue to develop and improve our projects.
 
@@ -22,3 +26,4 @@ This website is organization into multiple sections, each with its own focus. Th
   how to resolve them across all the 
   various projects.
 
+[![Join me on Discord](https://discord.com/api/guilds/1229586267671629945/widget.png?style=banner2)](https://discord.gg/eT8zc3bvPR)

@@ -43,6 +43,10 @@ nav:
       - Calibration Process: afc-klipper-add-on/installation/calibration.md
   - BoxTurtle:
       - Overview: boxturtle/index.md
+      - Printed Parts: boxturtle/printed-parts.md
+      - Wiring Guide: boxturtle/wiring-guide.md
+      - LDO Kit Errata: boxturtle/errata.md
+      - BOM: boxturtle/bom.md
       - Initial Startup:
           - Overview: boxturtle/initial_startup/01-overview.md
           - Flashing: boxturtle/initial_startup/02-flashing.md
@@ -55,9 +59,8 @@ nav:
           - Slicer Config: boxturtle/initial_startup/09-slicer-config.md
           - Print Start Macro: boxturtle/initial_startup/10-print-start-macro.md
           - Troubleshooting: boxturtle/initial_startup/11-troubleshooting.md
-      - LDO Kit Errata: boxturtle/errata.md
-      - BOM: boxturtle/bom.md
-      - Wiring Guide: boxturtle/wiring-guide.md
+
+      - Vendors: boxturtle/vendors.md
 
   - AFC-Accessories:
       - Overview: afc-accessories/index.md
