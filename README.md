@@ -24,6 +24,17 @@ Sync lockfile
 uv sync
 ```
 
+To init the git submodules, run the following:
+
+```bash
+git submodule init
+git pull --recurse-submodules
+git submodule update --recursive --remote
+```
+
+This needs to be done before building the documentation to ensure that the latest `AFC-Klipper-Add-On` stuff is 
+present. 
+
 ## Run locally:
 ```bash
 mkdocs serve
