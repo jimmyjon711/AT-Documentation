@@ -1,9 +1,0 @@
-[data-md-icon="custom/fancyturtle"]::before {
-  -webkit-mask-image: url("../assets/icons/fancyturtle.svg");
-          mask-image: url("../assets/icons/fancyturtle.svg");
-}
-
-[data-md-icon="custom/angryturtle"]::before {
-  -webkit-mask-image: url("../assets/icons/angryturtle.svg");
-          mask-image: url("../assets/icons/angryturtle.svg");
-}
