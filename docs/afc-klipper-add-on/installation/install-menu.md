@@ -59,10 +59,11 @@ defaults to *true* and is recommended to be left as such.
     This boolean is used to enable or disable the hub cutter. Hub cutters are a remote filament cutter not 
     co-located with the toolhead. Examples of this include user mods such as `Snappy` and other EREC based mods. This 
     defaults to *false* as the recommended setup is to use a toolhead cutter. If the hub cutter is enabled, ensure that 
-    the options in the `~/printer_data/config/AFC/AFC.cfg` file are set correctly.
+    the options in the `~/printer_data/config/AFC/AFC_<unit_type>.cfg` file are set correctly in the `[AFC_hub <hub>]`
+     section. 
 === "Configuration"
-    Once set, this option can be changed via editing the `AFC.cfg` file typically located in the 
-    `~/printer_data/config/AFC` directory.
+    Once set, this option can be changed via editing the `AFC_<unit_type>.cfg` file typically located in the 
+    `~/printer_data/config/AFC` directory. These changes should be made in the `[AFC_hub <hub>]` section.
 
 #### `5. Kick Macro`
 
