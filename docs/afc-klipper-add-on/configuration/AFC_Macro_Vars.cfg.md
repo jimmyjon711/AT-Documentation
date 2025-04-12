@@ -131,9 +131,11 @@ variable_pushback_length          : 15
 variable_safe_margin_xy           : 30, 30 
 variable_cut_current_stepper_x: 0
 variable_cut_current_stepper_y: 0
+variable_cut_current_dual_carriage: 0
 variable_cut_current_stepper_z: 0
 variable_conf_name_stepper_x: "tmc2209 stepper_x"
 variable_conf_name_stepper_y: "tmc2209 stepper_y"
+variable_conf_name_stepper_dual_carriage: "tmc2209 dual_carriage"
 variable_conf_name_stepper_z: "tmc2209 stepper_z"
 variable_awd: False
 ```
@@ -291,6 +293,13 @@ engage different combinations of steppers for that motion. If enabled, the value
     This value should be set to `0` to disable the override.
 
 -----
+=== "variable_cut_current_stepper_dual_carriage"
+    Default: `0`  
+    This is the value that is used to define the current for the dual carriage stepper (2nd x) for an IDEX 
+    printer during the cut. 
+    This value should be set to `0` to disable the override.
+
+-----
 === "variable_cut_current_stepper_y"
     Default: `0`  
     This is the value that is used to define the current for the Y stepper during the cut. 
@@ -302,10 +311,17 @@ engage different combinations of steppers for that motion. If enabled, the value
     This is the value that is used to define the current for the Z stepper during the cut. 
     This value should be set to `0` to disable the override.   
 
----
+-----
 === "variable_conf_name_stepper_x"
     Default: `"tmc2209 stepper_x"`  
     This is the value that is used to define the name of the X stepper in the printer.cfg file. 
+    This value should be set to the name of the stepper in your printer.cfg file.
+
+-----
+=== "variable_conf_name_stepper_dual_carriage"
+    Default: `"tmc2209 dual_carriage"`  
+    This is the value that is used to define the name of the dual carriage stepper (2nd X) for an IDEX printer in the 
+    printer.cfg file. 
     This value should be set to the name of the stepper in your printer.cfg file.
 
 -----
