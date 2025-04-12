@@ -106,5 +106,5 @@ not currently loaded as the PURGE_LENGTH from Orca for the first change would be
 `T{initial_tool} PURGE_LENGTH=100`
 
 **NOTE: If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
-macro will then use `variable_purge_length_minimum` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
+macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
 your printer**
