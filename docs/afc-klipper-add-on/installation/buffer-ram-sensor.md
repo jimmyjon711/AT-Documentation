@@ -73,7 +73,7 @@ buffer: TN
 
 ### Optional Configuration
 
-Under `[AFC_extruder extruder]` section:
+Under `[AFC]` section in the `AFC.cfg` file:
 
 `tool_max_load_checks: 4` can be set for the amount of times the AFC pulls back after load to come off the advance
  sensor. See [here](../configuration/AFC_Hardware.cfg.md#afc_buffer-buffer_name-section) for more information.
@@ -87,5 +87,7 @@ See [here](../configuration/AFC_Hardware.cfg.md#afc_buffer-buffer_name-section) 
 
 ## Tuning
 
+The following parameters should be tuned for the specific setup. These can be found in the `[AFC_hub <unit_name>]` 
+section.
 - `afc_bowden_length` should be set so that on unload the filament comes just short of the hub sensor.
 - `tool_unload_stn` should be set so that on unload the filament clears the extruder.

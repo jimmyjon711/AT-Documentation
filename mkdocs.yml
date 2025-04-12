@@ -59,9 +59,7 @@ nav:
           - Slicer Config: boxturtle/initial_startup/09-slicer-config.md
           - Print Start Macro: boxturtle/initial_startup/10-print-start-macro.md
           - Troubleshooting: boxturtle/initial_startup/11-troubleshooting.md
-
       - Vendors: boxturtle/vendors.md
-
   - AFC-Accessories:
       - Overview: afc-accessories/index.md
   - Troubleshooting:
@@ -77,6 +75,7 @@ theme:
     repo: fontawesome/brands/github
   name: material
   logo: assets/logo.png
+  custom_dir: overrides
   favicon: assets/favicon-32x32.png
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -134,6 +133,12 @@ markdown_extensions:
   - pymdownx.blocks.caption
   - pymdownx.details
   - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:
@@ -164,12 +169,12 @@ extra:
     feedback:
       title: Was this page helpful?
       ratings:
-        - icon: material/emoticon-happy-outline
+        - icon: happyturtle
           name: This page was helpful
           data: 1
           note: >-
             Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
+        - icon: angryturtle
           name: This page could be improved
           data: 0
           note: >-
