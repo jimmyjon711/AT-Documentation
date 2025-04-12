@@ -12,6 +12,7 @@ nav:
   - AFC-Klipper-Add-On:
       - Overview: afc-klipper-add-on/index.md
       - Features: afc-klipper-add-on/features.md
+      - GUI Support: afc-klipper-add-on/gui.md
       - Installation:
           - Getting Started: afc-klipper-add-on/installation/getting-started.md
           - Runtime Options: afc-klipper-add-on/installation/runtime-options.md
