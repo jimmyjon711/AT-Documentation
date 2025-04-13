@@ -10,7 +10,7 @@ configured as per the below screenshot.
 ![Orca_Printer_Settings](../../assets/images/orca-multimaterialtab.png)
 
 Also, on the Extruder 1 setting page - reduce `Retraction while switching material` length from the default of 2 to
-0.5.
+0.
 
 #### Adding additional filaments/extruders
 
