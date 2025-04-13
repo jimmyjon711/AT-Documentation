@@ -108,3 +108,22 @@ not currently loaded as the PURGE_LENGTH from Orca for the first change would be
 **NOTE: If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
 macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
 your printer**
+
+## Spoolman
+
+AFC has the ability to integrate with Spoolman. This is as simple as ensuring that the following information is 
+present in your `moonraker.conf` file:
+
+```ini
+[spoolman]
+server: http://<ip>:<port>
+sync_rate: 5
+```
+
+For example:
+
+```ini
+[spoolman]
+server: http://192.168.1.184:7912
+sync_rate: 5
+```
