@@ -1,5 +1,19 @@
 # Troubleshooting
 
+## AFC Debug Script
+
+A debug script is available to be run that can assist the Armored Turtle support team on their Discord server. To run 
+this script, simply use the following commands on your SBC:
+
+```bash
+cd ~/AFC-Klipper-Add-On
+./afc-debug.sh
+```
+
+This script will collect some basic information about your system to include Klipper logs, device information, CAN 
+network information, and your AFC configuration. This information will be uploaded to termbin.com, and the resulting 
+link can be used to share this information with the Armored Turtle support team.
+
 ## Common Issues
 
 ### `TMC 'AFC_stepper lane1' reports error: GSTAT:      00000001 reset=1(Reset)`
