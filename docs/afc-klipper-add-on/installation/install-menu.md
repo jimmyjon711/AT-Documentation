@@ -110,9 +110,11 @@ defaults to *true* and is recommended to be left as such.
 #### `A. Toolhead Sensor Pin`
 
 === "Description"
-    This option is used to select the pin that the toolhead sensor is connected to. This should be input in the 
-    format of `mcu:pin` such as `nhk:gpio13` or `ebb:pa4`. Ensure that you use the proper pin for your specific 
-    system. A pull-up `^` may be required in front of the pin if you experience intermittent issues with the sensor.
+    This option is used to select the pin that the toolhead sensor is connected to. This pin refers to the 
+    `pin_tool_start` pin (or the one before the extruder gears if you have both a pre- and post-gear sensor system). This 
+    should be input in the format of `mcu:pin` such as `nhk:gpio13` or `ebb:pa4`. Ensure that you use the proper pin 
+    for your specific system. A pull-up `^` may be required in front of the pin if you experience intermittent issues 
+    with the sensor.
 
 ???+ note
     This option will only appear if the `Toolhead sensor or Ramming` option is set to `Sensor`.
