@@ -63,4 +63,6 @@ conducting analysis on any failures.
 
 If you are doing a new build of Clockwork2 there will not be sufficient heat sets in the bag - the kits were designed
 with an upgrade to an existing CW2 extruder in mind. Additionally, the kits may be a 1-2 heat sets short for all
-components even after accounting for spares in the FilamATrix bag, this will be corrected in a future batch.
+components even after accounting for spares in the FilamATrix bag.
+
+Batch 3 has an increased amount of heatset inserts.
