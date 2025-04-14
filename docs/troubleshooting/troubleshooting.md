@@ -41,7 +41,8 @@ If your leds are not displaying the correct color update the following value und
 ### Filament pulling past extruder during unloads
 
 During unloads if your filament retracts too much and goes past the lanes extruder then decrease your 
-`afc_bowden_length` value in `~/printer_data/config/AFC/AFC.cfg` file.
+`afc_bowden_length` value in the `[AFC_hub <hub_name]` portion of the `~/printer_data/config/AFC/AFC_Turtle_(n).cfg` 
+file. 
 
 ### Layer shift when using the cut macro
 
