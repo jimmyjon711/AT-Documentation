@@ -6,7 +6,7 @@ A debug script is available to be run that can assist the Armored Turtle support
 this script, simply use the following commands on your SBC:
 
 ```bash
-cd ~/AFC-Klipper-Add-On
+cd ~/AFC-Klipper-Add-On/troubleshooting
 ./afc-debug.sh
 ```
 
