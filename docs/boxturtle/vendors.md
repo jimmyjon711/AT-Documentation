@@ -26,6 +26,7 @@ EU:
 - [Alchemy3D.de](https://alchemy3d.de) has a [BOM in a box kit](https://alchemy3d.de/products/boxturtle)
 - [Lab4450.com](https://lab4450.com) resells the [AFC-Lite MCU](https://lab4450.com/product/afc-lite-board/)
 - [3DO](https://3do.dk/3d-printer/2946-ldo-boxturtle-afc-kit-til-klipper-printere-forudbestilling.html)
+- [3Djake](https://www.3djake.ch/fr-CH/ldo-motors/boxturtle-v10)
 
 UK:
 
