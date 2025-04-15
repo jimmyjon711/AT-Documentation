@@ -7,6 +7,10 @@ are in `AFC/AFC_Hardware.cfg`, `variable_retract_length` and `variable_pushback_
 `AFC/AFC_Macro_Vars.cfg`. For `tool_stn`, if you have `pin_tool_end` defined, use the second value; otherwise, use
 the first value. You may need to increase this value if you are using a ram buffer as the toolhead sensor.
 
+Below is an example diagram of a Revo Voron hotend on FilamATrix/Clockwork 2:
+
+![revo-voron-filamatrix-cw2-diagram](../../assets/images/example-cw2-revo.png)
+
 ### Hotend specific values
 
 === "Revo Voron"
