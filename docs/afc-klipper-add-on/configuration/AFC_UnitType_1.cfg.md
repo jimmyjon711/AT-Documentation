@@ -391,8 +391,6 @@ typically used to define the unit name and other options that are specific to th
 
 ``` cfg
 [AFC_BoxTurtle Turtle_1]
-#    The type of the unit. This should be set to `Box Turtle` for all
-#    BoxTurtle units.
 hub:
 #    Default: <none>
 #    Hub name(AFC_hub) that belongs to this unit. can be overriden in 
