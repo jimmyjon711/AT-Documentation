@@ -138,6 +138,12 @@ variable_conf_name_stepper_y: "tmc2209 stepper_y"
 variable_conf_name_stepper_dual_carriage: "tmc2209 dual_carriage"
 variable_conf_name_stepper_z: "tmc2209 stepper_z"
 variable_awd: False
+
+# Addon variables for cutter pin servo control
+variable_tool_servo_enable        : False
+variable_tool_servo_name          : "tool_cut"
+variable_tool_servo_angle_out     : 115
+variable_tool_servo_angle_in      : 0
 ```
 
 -----
@@ -342,6 +348,30 @@ engage different combinations of steppers for that motion. If enabled, the value
     This is the value that is used to define whether system is using 'AWD' to adjust these for multiple X or Y 
     steppers. 
     This value should be set to `True` or `False`.
+
+-----
+=== "variable_tool_servo_enable"
+    Default: `False`  
+    This is the value that is used to define whether the tool servo is enabled. 
+    This value should be set to `True` or `False`.
+
+-----
+=== "variable_tool_servo_name"
+    Default: `"tool_cut"`  
+    This is the value that is used to define the name of the tool servo in the printer.cfg file. 
+    This value should be set to the name of the servo in your printer.cfg file.
+
+-----
+=== "variable_tool_servo_angle_out"
+    Default: `115`  
+    This is the value that is used to define the angle of the tool servo when it is out. 
+    This value should be set to the angle of the servo in degrees.
+
+-----
+=== "variable_tool_servo_angle_in"
+    Default: `0`  
+    This is the value that is used to define the angle of the tool servo when it is in. 
+    This value should be set to the angle of the servo in degrees.
 
 ## [_AFC_POOP_VARS]
 

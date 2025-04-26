@@ -557,3 +557,26 @@ unload_on_runout: False
 #    triggered and spool to swap is not set (infinite spool). Setting
 #    value here overrides values set in AFC.cfg file.
 ```
+## [servo tool_cut] Section
+
+The following options are available for all units (BoxTurtle, HTLF, and NightOwl) and allow for the configuration and 
+operation of a gantry mounted servo to assist in tool cutting. 
+
+``` cfg
+[servo tool_cut]
+#--=================================================================================--#
+######### Tip Cut Servo ###############################################################
+#--=================================================================================--#
+pin: YOUR_SERVO_PIN_HERE
+#    This should be the MCU/pin combination for the servo pin.
+minimum_pulse_width: 0.00053
+#    Adjust this value until a '_CUTTER_SERVO POS=out' extends the pin 
+#    fully without a buzzing sound.
+maximum_pulse_width: 0.0023
+#    Adjust this value until a '_CUTTER_SERVO POS=in' retracts the pin 
+#    fully without a buzzing sound.
+maximum_servo_angle: 180
+#   Initial angle (in degrees) to set the servo to. The default is to
+#   not send any signal at startup.
+
+```
