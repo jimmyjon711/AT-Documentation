@@ -71,10 +71,6 @@ assisted_unload: True
 pause_when_bypass_active: True
 #    Default: False
 #    When True AFC pauses print when change tool is called and bypass is loaded
-unload_on_runout: True
-#    Default: False   
-#    When True AFC will unload lane and then pause when runout is triggered and 
-#    spool to swap to is not set(infinite spool)
 debug: False
 #    Default: False                    
 #    Setting to True turns on more debugging to show on console.
