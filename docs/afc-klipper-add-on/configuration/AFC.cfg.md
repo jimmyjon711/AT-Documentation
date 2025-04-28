@@ -131,9 +131,6 @@ resume_speed: 25
 resume_z_speed: 25
 #    Default: 25
 #    Speed in mm/s of the resume move in Z. Set to 0 to use gcode speed.
-pause_when_bypass_active: False
-#    Default: False
-#    When true AFC pauses print when change tool is called and bypass is loaded
 unload_on_runout: False
 #    Default: False
 #    When True AFC will unload lane and then pause when runout is triggered 
