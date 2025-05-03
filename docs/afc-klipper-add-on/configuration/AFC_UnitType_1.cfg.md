@@ -215,11 +215,6 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm once 
 #    filament has moved by `delta_movement` amount. Setting value here 
 #    overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
-mm_per_rotation: 628.32
-#    Default: 628.32
-#    Affects espooler assist, distance in mm a spool travels to complete 
-#    a full spin. Setting value here overrides values set in 
-#    unit (AFC_BoxTurtle/NightOwl/etc) section.
 cycles_per_rotation: 1275
 #    Default: 1275
 #    Affects espooler assist, time it takes to in milliseconds to turn 
@@ -232,7 +227,7 @@ pwm_value: 0.6706
 spoolrate: 1.0
 #    Default: 1.0
 #    Scaling factor for the following variables: 
-#      kick_start_time, mm_per_rotation, cycles_per_rotation, 
+#      kick_start_time, spool_outer_diameter, cycles_per_rotation, 
 #      pwm_value, delta_movement, mm_movement
 #    Setting value here overrides values set in unit(AFC_BoxTurtle/NightOwl/etc)
 #    section.
@@ -271,7 +266,7 @@ spool_inner_diameter: 100
 #    Inner diameter of the spool in mm.
 spool_outer_diameter: 200
 #    Default: 200 
-#    Outer diameter of the spool in mm.
+#    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
 #    Weight of the empty spool in grams.
@@ -482,11 +477,6 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm 
 #    once filament has moved by `delta_movement` amount
 #    Can be overridden in the [AFC_stepper] section.
-mm_per_rotation: 628.32
-#    Default: 628.32
-#    Affects espooler assist, distance in mm a spool travels to complete 
-#    a full spin.
-#    Can be overridden in the [AFC_stepper] section.
 cycles_per_rotation: 1275
 #    Default: 1275
 #    Affects espooler assist, time it takes to in milliseconds to turn 
@@ -499,7 +489,7 @@ pwm_value: 0.6706
 spoolrate: 1.0
 #    Default: 1.0
 #    Scaling factor for the following variables: 
-#      kick_start_time, mm_per_rotation, cycles_per_rotation, 
+#      kick_start_time, spool_outer_diameter, cycles_per_rotation, 
 #      pwm_value, delta_movement, mm_movement
 #    Can be overridden in the [AFC_stepper] section.
 led_fault: 1,0,0,0
@@ -624,11 +614,6 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm 
 #    once filament has moved by `delta_movement` amount
 #    Can be overridden in the [AFC_stepper] section.
-mm_per_rotation: 628.32
-#    Default: 628.32
-#    Affects espooler assist, distance in mm a spool travels to complete 
-#    a full spin.
-#    Can be overridden in the [AFC_stepper] section.
 cycles_per_rotation: 1275
 #    Default: 1275
 #    Affects espooler assist, time it takes to in milliseconds to turn 
@@ -641,7 +626,7 @@ pwm_value: 0.6706
 spoolrate: 1.0
 #    Default: 1.0
 #    Scaling factor for the following variables: 
-#      kick_start_time, mm_per_rotation, cycles_per_rotation, 
+#      kick_start_time, spool_outer_diameter, cycles_per_rotation, 
 #      pwm_value, delta_movement, mm_movement
 #    Can be overridden in the [AFC_stepper] section.
 led_fault: 1,0,0,0
