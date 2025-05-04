@@ -140,3 +140,9 @@ configuration:
 ``` cfg
 hub: direct
 ```
+
+## Espooler Print Assist
+
+AFC has the ability to activate espooler forward movement when printing to help aid in spools from
+walking around and riding up wheels when they get low. This is enabled by default and can be turned off
+by adding `enable_assist: False` to you `[AFC_BoxTurtle Turtle_(n)]` config section.
