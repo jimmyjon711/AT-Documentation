@@ -71,3 +71,8 @@ betas/release candidates) you will need to make the following additional changes
 Because the AFC-Klipper-Add-On handles any tip forming in the extension, we need to disable these specific settings in
 the slicer software. Below is a screenshot for OrcaSlicer, but most Slic3r-based slicers have a similar dialog/setting.
 ![Orca_Ramming_Settings](../../assets/images/orca-ramming-settings.png)
+
+
+### Other slicers
+
+PrusaSlicer - https://www.youtube.com/watch?v=ilxtHVNhsM4
