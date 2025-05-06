@@ -42,3 +42,7 @@ UK:
 AU:
 
 - [DREMC](https://store.dremc.com.au/products/ldo-box-turtle-hardware-kit)
+
+CN:
+
+- [TriangleLabs](https://www.aliexpress.us/item/3256808146842990.html)
