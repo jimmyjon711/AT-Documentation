@@ -22,6 +22,10 @@ Increase the number of filaments to match your BoxTurtle's lane count.
 - Set `Machine start G-code` appropriately for your printer, specifically adding the `TOOL={initial_tool}` to your `
   PRINT_START` macro.
 
+!!! note
+
+    More information about the `PRINT_START` macro will be covered in the next section, so keep this in mind!
+
 ``` g-code
 M104 S0 ; Stops OrcaSlicer from sending temperature waits separately
 M140 S0 ; Stops OrcaSlicer from sending temperature waits separately
