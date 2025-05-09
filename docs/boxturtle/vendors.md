@@ -32,6 +32,7 @@ EU:
 - [3DO](https://3do.dk/3d-printer/2946-ldo-boxturtle-afc-kit-til-klipper-printere-forudbestilling.html)
 - [3Djake](https://www.3djake.ch/fr-CH/ldo-motors/boxturtle-v10)
 - [myrigs3d](https://myrigs3d.com/)
+- [zen3d](https://shop.zen3d.eu/ldo-boxturtle-v10)
 
 UK:
 
