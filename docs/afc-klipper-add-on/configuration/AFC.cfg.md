@@ -37,12 +37,18 @@ short_moves_speed: 50
 #    Default: 50           
 #    Speed in mm/s. This is the speed used for short moves, such as 
 #    when moving the final distance to the toolhead or during calibration.
+quiet_moves_speed: 50
+#    Default: 50           
+#    Speed in mm/s. This is the speed cap during quiet moves.
 short_moves_accel: 300
 #    Default: 300          
 #    Speed in mm/s². This is the acceleration used for short moves.
 short_move_dis: 10
 #    Default: 10              
 #    Move distance for failsafe moves.
+show_quiet_mode: True
+#    Default: True
+#    Present quiet mode toggle as a filament switch.
 global_print_current: 0.6
 #    Default: 0.6
 #    Uncomment to set stepper motors to a lower current while printing.

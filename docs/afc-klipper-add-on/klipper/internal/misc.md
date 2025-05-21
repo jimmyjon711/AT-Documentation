@@ -3,6 +3,13 @@
 These macros are used for various purposes, including error handling, tool changes, and AFC status updates.
 
 -----
+[AFC_QUIET_MODE]
+::: AFC.afc.cmd_AFC_QUIET_MODE
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
 [SET_AFC_TOOLCHANGES]
 ::: AFC.afc.cmd_SET_AFC_TOOLCHANGES
     options:
