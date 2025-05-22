@@ -156,7 +156,10 @@ unload_on_runout: False
 #    Default: False
 #    When True AFC will unload lane and then pause when runout is triggered 
 #    and spool to swap to is not set(infinite spool).
-
+print_short_stats: False
+#    Default: False
+#    When True AFC_STATS macro will print out in a skinnier format to better fit
+#    consoles that are smaller in width
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
@@ -180,6 +183,10 @@ tool_cut_cmd: AFC_CUT
 #    Macro name to call when cutting filament. Using the default AFC_CUT macro
 #    will call the macro defined in `Cut.cfg`. You can replace this with a 
 #    custom macro name if you have a different cutting method or tool.
+tool_cut_threshold: 10000
+#    A warning will print out 1,000 cuts before the threshold is hit. Once this
+#    threshold is hit, a message is displayed as an error notifying that the cut
+#    threshold for the current blade has exceeded this threshold.
 
 # Park Settings
 park: True                      

@@ -54,19 +54,20 @@ allow you to either show both sensors or just prep/load sensors by using `sensor
 
 ## Tool change count
 
-AFC has the ability to keep track of number of tool changes when doing multicolor prints. The macro can be used to set
-total number of toolchanges from slicer. AFC will keep track of tool changes and print out the current tool change 
-number when a T(n) command is called from gcode.
+AFC has the ability to keep track of number of tool changes when doing multicolor prints. Number of toolchanges
+will be pulled from files metadata stored in moonraker. AFC will keep track of tool changes and print out the 
+current tool change number when a T(n) command is called from gcode. Make sure moonraker version is at least v0.9.3-64 to
+utilize this feature.  
 
-This call can be added to the slicer by adding the following lines to Change filament G-code section in your slicer.
-You may already have `T[next_extruder]`, just make sure the toolchange call is after your T(n) call.
+If you have setup your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
+the following lines:
 
 ```cfg
-T[next_extruder]
 { if toolchange_count == 1 }SET_AFC_TOOLCHANGES TOOLCHANGES=[total_toolchanges]{endif }
 ```
 
-The following can also be added to your `PRINT_END` section in your slicer to set number of toolchanges back to zero.
+Also remove the following if added to your `PRINT_END` section as number of toolchanges will now automatically reset back
+once print is done/canceled.
 
 `SET_AFC_TOOLCHANGES TOOLCHANGES=0`
 
@@ -146,3 +147,35 @@ hub: direct
 AFC has the ability to activate espooler forward movement when printing to help aid in spools from
 walking around and riding up wheels when they get low. This is enabled by default and can be turned off
 by adding `enable_assist: False` to you `[AFC_BoxTurtle Turtle_(n)]` config section.
+
+## Quiet Mode
+
+AFC has the ability to run motors at slower speed when doing loads to reduce motor noise. This is helpful for
+those that may have a printer in their bedroom and would like to run multicolor prints overnight. To enabled
+quiet mode there is a filament switch under your filament sensor called `Quiet Mode`, once this is enabled AFC will do long moves at
+a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.  
+
+Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
+`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
+
+## Tracking Toolchange Statistics
+
+AFC tracks all toolchanges, lane loading/unloading, number of changes since last load error, total number
+of cuts performed, number of cuts since blade last changed and how long N20 motors have been active if
+N20 are configured in your setup.  
+
+AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you know that its getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
+
+Use the following macros to print out statistics in console, update when blade has been changes and reset
+N20 active time:  
+- [AFC_STATS](klipper/internal/misc.md#AFC.afc.AFC_STATS) - prints statistics to console  
+- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count  
+- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
+
+Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :  
+- `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )  
+- `tool_cut_threshold`: Defaults to 10000 cuts, update to if you want threshold to be larger. This controls when AFC prints out warning/errors when number of cuts since changed reaches/exceeds this number.
+
+Examples of what statistics printout looks like:  
+![stats_normal](../assets/images/afc_stats_wide.png)
+![stats_short](../assets/images/afc_stats_short.png)

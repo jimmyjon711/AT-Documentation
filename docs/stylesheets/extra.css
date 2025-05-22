@@ -34,3 +34,6 @@
     --md-mermaid-label-fg-color: #000000;
     --md-code-bg-color: #dcdbdb;
 }
+
+img[alt=stats_normal]{ width: 60%; float:left}
+img[alt=stats_short]{width: 35%}

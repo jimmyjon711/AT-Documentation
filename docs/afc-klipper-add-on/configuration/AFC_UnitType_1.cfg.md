@@ -164,6 +164,9 @@ long_moves_accel: 250
 #    Acceleration in mm/s squared when doing long moves. 
 #    Setting value here overrides values set in 
 #    unit(AFC_BoxTurtle/NightOwl/etc) section
+quiet_moves_speed: 50
+#    Default: 50           
+#    Speed in mm/s. This is the speed cap during quiet moves.
 short_moves_speed: 50
 #    Default: 50
 #    Speed in mm/s to move filament when doing short moves. 
