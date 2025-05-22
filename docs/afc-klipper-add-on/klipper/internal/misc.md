@@ -99,3 +99,17 @@ These macros are used for various purposes, including error handling, tool chang
     options:
       docstring_style: numpy
       heading_level: 3
+
+-----
+[AFC_STATS]
+::: AFC.afc.cmd_AFC_STATS
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[AFC_CHANGE_BLADE]
+::: AFC.afc.cmd_AFC_CHANGE_BLADE
+    options:
+      docstring_style: numpy
+      heading_level: 3

@@ -121,3 +121,10 @@ toolhead / extruder.
     options:
       docstring_style: numpy
       heading_level: 3
+
+-----
+[AFC_RESET_MOTOR_TIME]
+::: AFC_assist.Espooler.cmd_AFC_RESET_MOTOR_TIME
+    options:
+      docstring_style: numpy
+      heading_level: 3
