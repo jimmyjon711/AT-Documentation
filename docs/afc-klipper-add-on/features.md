@@ -153,7 +153,7 @@ by adding `enable_assist: False` to you `[AFC_BoxTurtle Turtle_(n)]` config sect
 AFC has the ability to run motors at slower speed when doing loads to reduce motor noise. This is helpful for
 those that may have a printer in their bedroom and would like to run multicolor prints overnight. To enabled
 quiet mode there is a filament switch under your filament sensor called `Quiet Mode`, once this is enabled AFC will do long moves at
-a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.<br>
+a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.  
 
 Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
 `[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
@@ -162,20 +162,20 @@ Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in e
 
 AFC tracks all toolchanges, lane loading/unloading, number of changes since last load error, total number
 of cuts performed, number of cuts since blade last changed and how long N20 motors have been active if
-N20 are configured in your setup.
-<br><br>
-AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you know that its getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed
+N20 are configured in your setup.  
+
+AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you know that its getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
 
 Use the following macros to print out statistics in console, update when blade has been changes and reset
-N20 active time:<br>
-- [AFC_STATS](klipper/internal/misc.md#AFC.afc.AFC_STATS) - prints statistics to console<br>
-- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count<br>
+N20 active time:  
+- [AFC_STATS](klipper/internal/misc.md#AFC.afc.AFC_STATS) - prints statistics to console  
+- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count  
 - [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
 
-Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :<br>
-- `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )<br>
+Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :  
+- `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )  
 - `tool_cut_threshold`: Defaults to 10000 cuts, update to if you want threshold to be larger. This controls when AFC prints out warning/errors when number of cuts since changed reaches/exceeds this number.
 
-Examples of what statistics printout looks like:<br>
+Examples of what statistics printout looks like:  
 ![stats_normal](../assets/images/afc_stats_wide.png)
-![stats_short](../assets/images/afc_stats_short.png)<br>
+![stats_short](../assets/images/afc_stats_short.png)
