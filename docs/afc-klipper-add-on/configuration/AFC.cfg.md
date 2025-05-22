@@ -184,10 +184,9 @@ tool_cut_cmd: AFC_CUT
 #    will call the macro defined in `Cut.cfg`. You can replace this with a 
 #    custom macro name if you have a different cutting method or tool.
 tool_cut_threshold: 10000
-#    Threshold to warn when number of cuts for current blade gets close to this
-#    number. Warning start to print out 1k cuts before threshold is hit. Once
-#    threshold is hit, warning is printed as an error notifying that cuts for
-#    current blade has exceeded threshold.
+#    A warning will print out 1,000 cuts before the threshold is hit. Once this
+#    threshold is hit, a message is displayed as an error notifying that the cut
+#    threshold for the current blade has exceeded this threshold.
 
 # Park Settings
 park: True                      

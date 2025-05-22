@@ -57,7 +57,7 @@ allow you to either show both sensors or just prep/load sensors by using `sensor
 AFC has the ability to keep track of number of tool changes when doing multicolor prints. Number of toolchanges
 will be pulled from files metadata stored in moonraker. AFC will keep track of tool changes and print out the 
 current tool change number when a T(n) command is called from gcode. Make sure moonraker version is at least v0.9.3-64 to
-utilize this feature
+utilize this feature.  
 
 If you have setup your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
 the following lines:
