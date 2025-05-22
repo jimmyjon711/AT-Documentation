@@ -158,7 +158,7 @@ unload_on_runout: False
 #    and spool to swap to is not set(infinite spool).
 print_short_stats: False
 #    Default: False
-#    When True AFC_STATS macro will print out in a skinner format to better fix
+#    When True AFC_STATS macro will print out in a skinnier format to better fit
 #    consoles that are smaller in width
 ```
 
