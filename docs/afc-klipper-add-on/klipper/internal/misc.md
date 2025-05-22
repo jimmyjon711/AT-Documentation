@@ -17,13 +17,6 @@ These macros are used for various purposes, including error handling, tool chang
       heading_level: 3
 
 -----
-[SET_AFC_TOOLCHANGES]
-::: AFC.afc.cmd_SET_AFC_TOOLCHANGES
-    options:
-      docstring_style: numpy
-      heading_level: 3
-
------
 [HUB_LOAD]
 ::: AFC.afc.cmd_HUB_LOAD
     options:

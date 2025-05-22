@@ -59,7 +59,7 @@ will be pulled from files metadata stored in moonraker. AFC will keep track of t
 current tool change number when a T(n) command is called from gcode. Make sure moonraker version is at least v0.9.3-64 to
 utilize this feature.  
 
-If you have setup your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
+If you have set up your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
 the following lines:
 
 ```cfg
