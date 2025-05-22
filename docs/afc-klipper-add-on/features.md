@@ -152,11 +152,11 @@ by adding `enable_assist: False` to you `[AFC_BoxTurtle Turtle_(n)]` config sect
 
 AFC has the ability to run motors at slower speed when doing loads to reduce motor noise. This is helpful for
 those that may have a printer in their bedroom and would like to run multicolor prints overnight. To enabled
-quiet mode there is a filament switch under your filament sensor, once this is enabled AFC will do long moves at
+quiet mode there is a filament switch under your filament sensor called `Quiet Mode`, once this is enabled AFC will do long moves at
 a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.<br>
 
 Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
-`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.html#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.html#afc-section)).
+`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
 
 ## Tracking Toolchange Statistics
 
@@ -168,11 +168,11 @@ AFC will also start warning in console when your number of blade cuts is 1k less
 
 Use the following macros to print out statistics in console, update when blade has been changes and reset
 N20 active time:<br>
-- [AFC_STATS](klipper/internal/misc.html#AFC.afc.AFC_STATS) - prints statistics to console<br>
-- [AFC_CHANGE_BLADE](klipper/internal/misc.html#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count<br>
-- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.html#AFC_assist.Espooler.AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
+- [AFC_STATS](klipper/internal/misc.md#AFC.afc.AFC_STATS) - prints statistics to console<br>
+- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count<br>
+- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
 
-Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.html#afc-section) :<br>
+Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :<br>
 - `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )<br>
 - `tool_cut_threshold`: Defaults to 10000 cuts, update to if you want threshold to be larger. This controls when AFC prints out warning/errors when number of cuts since changed reaches/exceeds this number.
 
