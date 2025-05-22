@@ -4,7 +4,7 @@ These macros are used for various purposes, including error handling, tool chang
 
 -----
 [AFC_TOGGLE_MACRO]
-::: AFC.afc.AFC_TOGGLE_MACRO
+::: AFC.afc.cmd_AFC_TOGGLE_MACRO
     options:
       docstring_style: numpy
       heading_level: 3
