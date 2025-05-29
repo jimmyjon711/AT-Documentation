@@ -160,6 +160,9 @@ print_short_stats: False
 #    Default: False
 #    When True AFC_STATS macro will print out in a skinnier format to better fit
 #    consoles that are smaller in width
+show_macros: True
+#    Default: True
+#    When True, the AFC macros will be shown in the Mainsail/Fluidd GUI.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
