@@ -11,6 +11,11 @@ Below is an example diagram of a Revo Voron hotend on FilamATrix/Clockwork 2:
 
 ![revo-voron-filamatrix-cw2-diagram](../../assets/images/example-cw2-revo.png)
 
+!!!warning
+
+    These values are derived from community based feedback and are not guaranteed to work for your specific setup.
+    You may need to adjust them based on your specific hotend and extruder setup. Always test with caution.
+
 ### Hotend specific values
 
 #### Stealthburner & CW2
