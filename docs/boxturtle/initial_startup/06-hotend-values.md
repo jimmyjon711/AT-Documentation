@@ -47,6 +47,13 @@ Below is an example diagram of a Revo Voron hotend on FilamATrix/Clockwork 2:
     - `variable_retract_length`: 21
     - `variable_pushback_length`: 12.45
 
+=== "Dragon ACE with UHF <br>mini holder / 3mm spacer"
+
+    - `tool_stn`: 60
+    - `tool_stn_unload`: 106
+    - `variable_retract_length`: 22
+    - `variable_pushback_length`: 20
+
 ------
 
 #### Stealthburner / Other extruders
