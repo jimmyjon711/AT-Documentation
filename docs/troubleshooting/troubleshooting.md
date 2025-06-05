@@ -93,3 +93,22 @@ troubleshooting problems when you can re-crimp the connectors and test in a half
 Powering the SBC via your MCU (e.g., on a Leviathan) may also not provide sufficient power to the device. Rule out
 this as a cause by running separate power to the device.  If you are sharing multiple AC to DC PSUs, 
 ensure that the V- wires are connected together for a common reference voltage.
+
+## Flashing Issues or Errors
+
+If you are having issues flashing the AFC-Lite, please ensure that you are using the correct configuration for your device.
+
+### Error sending command: [SEND_BLOCK] to Device
+
+The easiest way to resolve this issue is to revert to a known commit in Katapult, rebuild the katapult firmware, and then
+reflash the katapult firmware to the AFC-Lite.
+
+```shell
+cd ~/katapult
+git checkout e1716657
+make clean
+make menuconfig
+make
+```
+
+Once the new katapult firmware is built, you can flash it to the AFC-Lite, and then proceed with flashing Klipper as normal.
