@@ -19,7 +19,7 @@ run = "mkdocs serve"
 
 [tasks.lint]
 description = "Lint the code"
-run = "ruff ."
+run = "ruff check ."
 
 [tasks.info]
 description = "Print project information"
