@@ -35,6 +35,10 @@ git submodule update --recursive --remote
 This needs to be done before building the documentation to ensure that the latest `AFC-Klipper-Add-On` stuff is 
 present. 
 
+## Alternative setup
+
+Alternatively, you can use `mise` to set up the environment. A `mise.toml` file is provided with the repo for this purpose.
+
 ## Run locally:
 ```bash
 mkdocs serve
