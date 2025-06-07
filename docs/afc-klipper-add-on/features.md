@@ -168,9 +168,9 @@ AFC will also start warning in console when your number of blade cuts is 1k less
 
 Use the following macros to print out statistics in console, update when blade has been changes and reset
 N20 active time:  
-- [AFC_STATS](klipper/internal/misc.md#AFC.afc.AFC_STATS) - prints statistics to console  
-- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count  
-- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
+- [AFC_STATS](klipper/internal/misc.md#AFC.afc.cmd_AFC_STATS) - prints statistics to console  
+- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.cmd_AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count  
+- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.cmd_AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
 
 Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :  
 - `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )  

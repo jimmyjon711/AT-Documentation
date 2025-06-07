@@ -163,6 +163,10 @@ print_short_stats: False
 show_macros: True
 #    Default: True
 #    When True, the AFC macros will be shown in the Mainsail/Fluidd GUI.
+error_timeout: 36000
+#    Default: 36000
+#    Time in seconds to pause if AFC encounters an error. This value will be 
+#    overridden if the `[idle_timeout].timeout value is higher.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
