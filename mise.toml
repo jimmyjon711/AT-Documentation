@@ -11,9 +11,9 @@ ruff = "latest"
 [tasks.install]
 description = "Install dependencies"
 alias = "i"
-run = "uv pip install -r requirements.txt"
+run = "uv sync"
 
-[tasks.run]
+[tasks.serve]
 description = "Serve the application"
 run = "mkdocs serve"
 
