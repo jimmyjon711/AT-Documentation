@@ -46,6 +46,12 @@ short_moves_accel: 300
 short_move_dis: 10
 #    Default: 10              
 #    Move distance for failsafe moves.
+max_move_dis: 99999
+#    Default: 99999
+#    Maximum distance to move filament. AFC breaks filament moves over
+#    this number into multiple moves. Useful to lower this number if
+#    running into timer too close errors when doing long filament moves.
+#    Setting value here overrides values set in AFC.cfg file.
 show_quiet_mode: True
 #    Default: True
 #    Present quiet mode toggle as a filament switch.
@@ -128,6 +134,9 @@ led_buffer_trailing: 0,1,0,0
 #    Buffer trailing color
 led_buffer_disable: 0,0,0,0.25  
 #    Buffer disable color
+led_spool_illuminate: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units and can be
+#    overridden in AFC_QuattroBox section
 n20_break_delay_time: 0.200
 #    Default: 0.200
 #    Time to wait between breaking n20 motors(nSleep/FWD/RWD all 1) and then 
@@ -167,6 +176,10 @@ error_timeout: 36000
 #    Default: 36000
 #    Time in seconds to pause if AFC encounters an error. This value will be 
 #    overridden if the `[idle_timeout].timeout value is higher.
+auto_home: False
+#    Default: False
+#    Enable to turn on auto homing if printer is not already hommed when
+#    loading/unloading a lane.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
