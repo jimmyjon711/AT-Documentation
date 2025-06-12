@@ -149,6 +149,17 @@ led_tool_loaded: 0,0,1,0
 #    LED color to set when lane is loaded in toolhead.
 #    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here 
 #    overrides values set in unit(AFC_BoxTurtle/NightOwl/etc) section.
+led_spool_index:
+#    Default: None
+#    Led index for led in chain that illuminates spool, currently only
+#    supports QuattroBox units. This should reference a defined LED in 
+#    the [AFC_Indicator] section. 
+#
+#    Index can have multiple entries in a comma separated list and range 
+#    values also are allowed.
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_spool_illuminate: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units.
 long_moves_speed: 150
 #    Default: 150
 #    Speed in mm/s to move filament when doing long moves. 
@@ -708,6 +719,49 @@ unload_on_runout: False
 #    triggered and spool to swap is not set (infinite spool). Setting
 #    value here overrides values set in AFC.cfg file.
 ```
+
+## [AFC_QuattroBox unit_name] Section
+
+The following options are available in the `[AFC_QuattroBox unit_name]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when interfacing with the AFC_QuattroBox unit type. This section is
+typically used to define the unit name and other options that are specific to the AFC_QuattroBox unit type.  
+
+QuattroBox has the same configurations as AFC_BoxTurtle configuration section, below are additional configuration values
+for a QuattroBox unit.  
+``` cfg
+led_logo_index:
+#    Default: None
+#    Led index for led in chain that illuminates a logo. This should reference 
+#    a defined LED in the [AFC_Indicator] section.
+#
+#    Index can have multiple entries in a comma separated list and range values
+#    also are allowed
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_logo_color: '0,0,0,0'
+#    Default: '0,0,0,0'
+#    Color to apply to logo. Logo also changes to led_logo_loading color when 
+#    loading a lane and then once a lane is loaded the logo changes to the lanes 
+#    spool color. When nothing is loaded this variable(led_logo_color) is 
+#    applied to logo.
+led_logo_loading: 1,0,0,0
+#    Default: 1,0,0,0
+#    Color to apply to logo when loading a lane, default values defaults to 
+#    led_loading variable
+led_spool_index:
+#    Default: None
+#    Led index for led in chain that illuminates spool. This should reference 
+#    a defined LED in the [AFC_Indicator] section.
+#    Can be overridden per lane in AFC_Stepper section.
+#
+#    Index can have multiple entries in a comma separated list and range values
+#    also are allowed
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_spool_illuminate: 1,1,1,0
+#    Default: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units and
+#    can be overridden in AFC_Stepper section.
+```
+
 ## [servo tool_cut] Section
 
 The following options are available for all units (BoxTurtle, HTLF, and NightOwl) and allow for the configuration and 
