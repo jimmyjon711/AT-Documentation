@@ -148,15 +148,19 @@ AFC has the ability to activate espooler forward movement when printing to help 
 walking around and riding up wheels when they get low. This is enabled by default and can be turned off
 by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.  
 
-With this functionality there are the following macros that all you to enable/disable and tweak the settings for
+The following variables described in [AFC_lane](configuration/AFC_UnitType_1.cfg.md#afc_lane-lane_name-section) section are all
+the values that go into the print assist logic: `enable_assist`, `enable_assist_weight`, `timer_delay`, `delta_movement`, `mm_movement`,
+`cycles_per_rotation`, `pwm_value`, `spoolrate`.
+
+With this functionality the following macros allow you to enable/disable and tweak the settings for
 print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
 [DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST), [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
 
-If the default values for print assist is unspooling too much you can start of be changing either `spoolrate` or `cycles_per_rotation` to decrease the time
+If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
 that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
 takes to spin the spool a full rotation.
 
-Below is a chart with the calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
+Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
 <table class="espooler" style="font-size: small">
 <style>
 td, th{
