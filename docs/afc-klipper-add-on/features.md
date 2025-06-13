@@ -161,7 +161,7 @@ that the N20 motors are active( aka cruise_time ). Spoolrate scales all variable
 takes to spin the spool a full rotation.
 
 Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
-<table class="espooler" style="font-size: small">
+<table class="espooler" style="font-size: medium">
 <style>
 td, th{
     padding: .1em 1em;
@@ -169,19 +169,19 @@ td, th{
 }
 </style>
 <thead>
-<tr><th colspan=3></th><th colspan=2>Cruise time when changing spoolrate</th><th colspan=2>Cruise time when changing cycles_per_rotation</th></tr></thead>
+<tr><th colspan=2>Cruise time when changing spoolrate</th><th colspan=2>Cruise time when changing cycles_per_rotation</th></tr></thead>
 <tbody>
-<tr><th>spoolrate</th><th>mm_movement</th><th>spool diameter</th><th>cycles_per_rotation</th><th>cruise_time</th><th>cycles_per_rotation</th><th>cruise_time</th></tr>
-<tr><td>1  </td><td>150	 </td><td>200  </td><td>1275  </td><td>0.4593</td><td>1275</td><td>0.4593</td></tr>
-<tr><td>0.9</td><td>135	 </td><td>180  </td><td>1147.5</td><td>0.4134</td><td>1100</td><td>0.3963</td></tr>
-<tr><td>0.8</td><td>108	 </td><td>144  </td><td>918   </td><td>0.3307</td><td>1000</td><td>0.3603</td></tr>
-<tr><td>0.7</td><td>75.6 </td><td>100.8</td><td>642.6 </td><td>0.2315</td><td>900 </td><td>0.3242</td></tr>
-<tr><td>0.6</td><td>45.36</td><td>60.48</td><td>385.56</td><td>0.1389</td><td>800 </td><td>0.2882</td></tr>
-<tr><td>0.5</td><td>22.68</td><td>30.24</td><td>192.78</td><td>0.0694</td><td>700 </td><td>0.2522</td></tr>
-<tr><td>0.4</td><td>9.07 </td><td>12.09</td><td>77.11 </td><td>0.0277</td><td>600 </td><td>0.2161</td></tr>
-<tr><td>0.3</td><td>2.72 </td><td>3.62 </td><td>23.13 </td><td>0.0083</td><td>500 </td><td>0.1801</td></tr>
-<tr><td>0.2</td><td>0.54 </td><td>0.72 </td><td>4.62  </td><td>0.0016</td><td>400 </td><td>0.1441</td></tr>
-<tr><td>0.1</td><td>0.05 </td><td>0.072</td><td>0.46  </td><td>0.0001</td><td>300 </td><td>0.1080</td></tr>
+<tr><th>spoolrate</th><th>cruise_time</th><th>cycles_per_rotation</th><th>cruise_time</th></tr>
+<tr><td>1  </td><td>0.4593</td><td>1275</td><td>0.4593</td></tr>
+<tr><td>0.9</td><td>0.4134</td><td>1100</td><td>0.3963</td></tr>
+<tr><td>0.8</td><td>0.3307</td><td>1000</td><td>0.3603</td></tr>
+<tr><td>0.7</td><td>0.2315</td><td>900 </td><td>0.3242</td></tr>
+<tr><td>0.6</td><td>0.1389</td><td>800 </td><td>0.2882</td></tr>
+<tr><td>0.5</td><td>0.0694</td><td>700 </td><td>0.2522</td></tr>
+<tr><td>0.4</td><td>0.0277</td><td>600 </td><td>0.2161</td></tr>
+<tr><td>0.3</td><td>0.0083</td><td>500 </td><td>0.1801</td></tr>
+<tr><td>0.2</td><td>0.0016</td><td>400 </td><td>0.1441</td></tr>
+<tr><td>0.1</td><td>0.0001</td><td>300 </td><td>0.1080</td></tr>
 </tbody>
 </table>
 
