@@ -113,3 +113,10 @@ These macros are used for various purposes, including error handling, tool chang
     options:
       docstring_style: numpy
       heading_level: 3
+
+-----
+[AFC_CLEAR_MESSAGE]
+::: AFC.afc.cmd_AFC_CLEAR_MESSAGE
+    options:
+      docstring_style: numpy
+      heading_level: 3
