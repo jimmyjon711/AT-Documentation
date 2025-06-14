@@ -146,7 +146,52 @@ hub: direct
 
 AFC has the ability to activate espooler forward movement when printing to help aid in spools from
 walking around and riding up wheels when they get low. This is enabled by default and can be turned off
-by adding `enable_assist: False` to you `[AFC_BoxTurtle Turtle_(n)]` config section.
+by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.  
+
+The following variables described in [AFC_lane](configuration/AFC_UnitType_1.cfg.md#afc_lane-lane_name-section) section are all
+the values that go into the print assist logic: `enable_assist`, `enable_assist_weight`, `timer_delay`, `delta_movement`, `mm_movement`,
+`cycles_per_rotation`, `pwm_value`, `spoolrate`.
+
+With this functionality the following macros allow you to enable/disable and tweak the settings for
+print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
+[DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST), [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+
+If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
+that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
+takes to spin the spool a full rotation.
+
+Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
+<table class="espooler" style="font-size: medium">
+<style>
+td, th{
+    padding: .1em 1em;
+    border: 1px solid grey;
+}
+</style>
+<thead>
+<tr><th colspan=2>Cruise time when changing spoolrate</th><th colspan=2>Cruise time when changing cycles_per_rotation</th></tr></thead>
+<tbody>
+<tr><th>spoolrate</th><th>cruise_time</th><th>cycles_per_rotation</th><th>cruise_time</th></tr>
+<tr><td>1  </td><td>0.4593</td><td>1275</td><td>0.4593</td></tr>
+<tr><td>0.9</td><td>0.4134</td><td>1100</td><td>0.3963</td></tr>
+<tr><td>0.8</td><td>0.3307</td><td>1000</td><td>0.3603</td></tr>
+<tr><td>0.7</td><td>0.2315</td><td>900 </td><td>0.3242</td></tr>
+<tr><td>0.6</td><td>0.1389</td><td>800 </td><td>0.2882</td></tr>
+<tr><td>0.5</td><td>0.0694</td><td>700 </td><td>0.2522</td></tr>
+<tr><td>0.4</td><td>0.0277</td><td>600 </td><td>0.2161</td></tr>
+<tr><td>0.3</td><td>0.0083</td><td>500 </td><td>0.1801</td></tr>
+<tr><td>0.2</td><td>0.0016</td><td>400 </td><td>0.1441</td></tr>
+<tr><td>0.1</td><td>0.0001</td><td>300 </td><td>0.1080</td></tr>
+</tbody>
+</table>
+
+Formula to calculate `cruise_time`:
+```
+rotation = mm movement / spool circumference
+correction_factor = 1.0 +  ( 1.68 * -rotations^5)
+cruise_time = rotations * cycles_per_rotation * correction_factor
+```
+Note: Spool circumference is automatically calculated from `spool_outer_diameter` variable
 
 ## Quiet Mode
 

@@ -63,13 +63,17 @@ enable_sensors_in_gui: True
 #    Default: False     
 #    Boolean to show all sensor switches as filament sensors in 
 #    the Mainsail/Fluidd gui.
-default_material_temps: default: 235, PLA:210, ABS:235, ASA:235 
+default_material_temps: default: 235, PLA:210, PETG:235, ABS:235, ASA:235 
 #    Default temperature to set extruder when loading/unloading lanes.
 #    Material needs to be either manually set or uses material from spoolman 
 #    if extruder temp is not set in spoolman. Follow current format to 
 #    add more filament types.
 default_material_type: PLA      
 #    Default material type to assign to a spool once loaded into a lane.
+common_density_values: PLA:1.24, PETG:1.23, ABS:1.04, ASA:1.07
+#    Default densities to set for material type when manually setting material with SET_MATERIAL macro.
+#    Density value can also be manually set when setting material and this manual value
+#    will be used instead of default values. 
 load_to_hub: True
 #    Default: True            
 #    Fast loads filament to hub when inserted, set to False to disable. This 
@@ -178,8 +182,17 @@ error_timeout: 36000
 #    overridden if the `[idle_timeout].timeout value is higher.
 auto_home: False
 #    Default: False
-#    Enable to turn on auto homing if printer is not already hommed when
+#    Enable to turn on auto homing if printer is not already homed when
 #    loading/unloading a lane.
+enable_assist: True
+#    Default: True
+#    Enables espooler print assist.
+#    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
+enable_assist_weight: 5000
+#    Default: 5000
+#    Number in grams to activate espooler print assist once spool weight is 
+#    less than this number.
+#    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
