@@ -54,19 +54,20 @@ allow you to either show both sensors or just prep/load sensors by using `sensor
 
 ## Tool change count
 
-AFC has the ability to keep track of number of tool changes when doing multicolor prints. The macro can be used to set
-total number of toolchanges from slicer. AFC will keep track of tool changes and print out the current tool change 
-number when a T(n) command is called from gcode.
+AFC has the ability to keep track of number of tool changes when doing multicolor prints. Number of toolchanges
+will be pulled from files metadata stored in moonraker. AFC will keep track of tool changes and print out the 
+current tool change number when a T(n) command is called from gcode. Make sure moonraker version is at least v0.9.3-64 to
+utilize this feature.  
 
-This call can be added to the slicer by adding the following lines to Change filament G-code section in your slicer.
-You may already have `T[next_extruder]`, just make sure the toolchange call is after your T(n) call.
+If you have set up your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
+the following lines:
 
 ```cfg
-T[next_extruder]
 { if toolchange_count == 1 }SET_AFC_TOOLCHANGES TOOLCHANGES=[total_toolchanges]{endif }
 ```
 
-The following can also be added to your `PRINT_END` section in your slicer to set number of toolchanges back to zero.
+Also remove the following if added to your `PRINT_END` section as number of toolchanges will now automatically reset back
+once print is done/canceled.
 
 `SET_AFC_TOOLCHANGES TOOLCHANGES=0`
 
@@ -127,3 +128,99 @@ For example:
 server: http://192.168.1.184:7912
 sync_rate: 5
 ```
+
+## Direct Drive
+
+AFC has the ability to use direct loading straight to the extruder/toolhead. There should be no hub in-between that 
+lane and the extruder when this option is used. Using `direct` will disable the ability to use the automatic 
+calibration functions.
+
+To enable `direct` mode, the following line needs to be added to the `[AFC_stepper <lane_name>]` section in your 
+configuration:
+
+``` cfg
+hub: direct
+```
+
+## Espooler Print Assist
+
+AFC has the ability to activate espooler forward movement when printing to help aid in spools from
+walking around and riding up wheels when they get low. This is enabled by default and can be turned off
+by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.  
+
+The following variables described in [AFC_lane](configuration/AFC_UnitType_1.cfg.md#afc_lane-lane_name-section) section are all
+the values that go into the print assist logic: `enable_assist`, `enable_assist_weight`, `timer_delay`, `delta_movement`, `mm_movement`,
+`cycles_per_rotation`, `pwm_value`, `spoolrate`.
+
+With this functionality the following macros allow you to enable/disable and tweak the settings for
+print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
+[DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST), [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+
+If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
+that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
+takes to spin the spool a full rotation.
+
+Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
+<table class="espooler" style="font-size: medium">
+<style>
+td, th{
+    padding: .1em 1em;
+    border: 1px solid grey;
+}
+</style>
+<thead>
+<tr><th colspan=2>Cruise time when changing spoolrate</th><th colspan=2>Cruise time when changing cycles_per_rotation</th></tr></thead>
+<tbody>
+<tr><th>spoolrate</th><th>cruise_time</th><th>cycles_per_rotation</th><th>cruise_time</th></tr>
+<tr><td>1  </td><td>0.4593</td><td>1275</td><td>0.4593</td></tr>
+<tr><td>0.9</td><td>0.4134</td><td>1100</td><td>0.3963</td></tr>
+<tr><td>0.8</td><td>0.3307</td><td>1000</td><td>0.3603</td></tr>
+<tr><td>0.7</td><td>0.2315</td><td>900 </td><td>0.3242</td></tr>
+<tr><td>0.6</td><td>0.1389</td><td>800 </td><td>0.2882</td></tr>
+<tr><td>0.5</td><td>0.0694</td><td>700 </td><td>0.2522</td></tr>
+<tr><td>0.4</td><td>0.0277</td><td>600 </td><td>0.2161</td></tr>
+<tr><td>0.3</td><td>0.0083</td><td>500 </td><td>0.1801</td></tr>
+<tr><td>0.2</td><td>0.0016</td><td>400 </td><td>0.1441</td></tr>
+<tr><td>0.1</td><td>0.0001</td><td>300 </td><td>0.1080</td></tr>
+</tbody>
+</table>
+
+Formula to calculate `cruise_time`:
+```
+rotation = mm movement / spool circumference
+correction_factor = 1.0 +  ( 1.68 * -rotations^5)
+cruise_time = rotations * cycles_per_rotation * correction_factor
+```
+Note: Spool circumference is automatically calculated from `spool_outer_diameter` variable
+
+## Quiet Mode
+
+AFC has the ability to run motors at slower speed when doing loads to reduce motor noise. This is helpful for
+those that may have a printer in their bedroom and would like to run multicolor prints overnight. To enabled
+quiet mode there is a filament switch under your filament sensor called `Quiet Mode`, once this is enabled AFC will do long moves at
+a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.  
+
+Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
+`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
+
+## Tracking Toolchange Statistics
+
+AFC tracks all toolchanges, lane loading/unloading, number of changes since last load error, total number
+of cuts performed, number of cuts since blade last changed and how long N20 motors have been active if
+N20 are configured in your setup.  
+
+AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you know that its getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
+
+Use the following macros to print out statistics in console, update when blade has been changes and reset
+N20 active time:  
+- [AFC_STATS](klipper/internal/misc.md#AFC.afc.cmd_AFC_STATS) - prints statistics to console  
+- [AFC_CHANGE_BLADE](klipper/internal/misc.md#AFC.afc.cmd_AFC_CHANGE_BLADE) - run macro when blade is changed, sets date that blade was changes and resets `Total since changed` count  
+- [AFC_RESET_MOTOR_TIME](klipper/internal/lane.md#AFC_assist.Espooler.cmd_AFC_RESET_MOTOR_TIME) - run macro when N20 motor has been swapped out in a lane
+
+Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.md#afc-section) :  
+- `print_short_stats`: Add/uncomment to have the statistics printout to be skinner. Useful for those that have consoles that are skinner( eg. Klipperscreen )  
+- `tool_cut_threshold`: Defaults to 10000 cuts, update to if you want threshold to be larger. This controls when AFC prints out warning/errors when number of cuts since changed reaches/exceeds this number.
+
+Examples of what statistics printout looks like:  
+![stats_normal](../assets/images/afc_stats_wide.png)
+![stats_short](../assets/images/afc_stats_short.png)

@@ -12,7 +12,7 @@ the toolhead / extruder.
 
 -----
 [SET_LANE_LOADED]
-::: AFC_stepper.AFCExtruderStepper.cmd_SET_LANE_LOADED
+::: AFC_lane.AFCLane.cmd_SET_LANE_LOADED
     options:
       docstring_style: numpy
       heading_level: 3
@@ -53,29 +53,36 @@ the toolhead / extruder.
       heading_level: 3
 
 -----
+[SET_LONG_MOVE_SPEED]
+::: AFC_lane.AFCLane.cmd_SET_LONG_MOVE_SPEED
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
 [SET_SPEED_MULTIPLIER]
-::: AFC_stepper.AFCExtruderStepper.cmd_SET_SPEED_MULTIPLIER
+::: AFC_lane.AFCLane.cmd_SET_SPEED_MULTIPLIER
     options:
       docstring_style: numpy
       heading_level: 3
 
 -----
 [SAVE_SPEED_MULTIPLIER]
-::: AFC_stepper.AFCExtruderStepper.cmd_SAVE_SPEED_MULTIPLIER
+::: AFC_lane.AFCLane.cmd_SAVE_SPEED_MULTIPLIER
     options:
       docstring_style: numpy
       heading_level: 3
 
 -----
 [SET_HUB_DIST]
-::: AFC_stepper.AFCExtruderStepper.cmd_SET_HUB_DIST
+::: AFC_lane.AFCLane.cmd_SET_HUB_DIST
     options:
       docstring_style: numpy
       heading_level: 3
 
 -----
 [SAVE_HUB_DIST]
-::: AFC_stepper.AFCExtruderStepper.cmd_SAVE_HUB_DIST
+::: AFC_lane.AFCLane.cmd_SAVE_HUB_DIST
     options:
       docstring_style: numpy
       heading_level: 3
@@ -83,6 +90,41 @@ the toolhead / extruder.
 -----
 [LANE_MOVE]
 ::: AFC.afc.cmd_LANE_MOVE
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[SET_ESPOOLER_VALUES]
+::: AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[ENABLE_ESPOOLER_ASSIST]
+::: AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[DISABLE_ESPOOLER_ASSIST]
+::: AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[TEST_ESPOOLER_ASSIST]
+::: AFC_assist.Espooler.cmd_TEST_ESPOOLER_ASSIST
+    options:
+      docstring_style: numpy
+      heading_level: 3
+
+-----
+[AFC_RESET_MOTOR_TIME]
+::: AFC_assist.Espooler.cmd_AFC_RESET_MOTOR_TIME
     options:
       docstring_style: numpy
       heading_level: 3

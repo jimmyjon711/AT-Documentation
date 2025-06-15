@@ -36,7 +36,6 @@ PRINT_START EXTRUDER=[nozzle_temperature_initial_layer] BED=[bed_temperature_ini
 
 ``` g-code
 T[next_extruder] PURGE_LENGTH=[flush_length]
-{ if toolchange_count == 1 }SET_AFC_TOOLCHANGES TOOLCHANGES=[total_toolchanges]{endif }
 ;FLUSH_START
 ;EXTERNAL_PURGE {flush_length}
 ;FLUSH_END
@@ -52,9 +51,6 @@ changes for PrusaSlicer in [this video](https://www.youtube.com/watch?v=ilxtHVNh
 
 ``` g-code
 T[next_extruder]
-{if layer_num < 0}
-SET_AFC_TOOLCHANGES TOOLCHANGES=[total_toolchanges]
-{endif}
 ```
 
 - Under each extruder in printer settings, change the default value of 'Retraction when tool is disabled' from 10mm to

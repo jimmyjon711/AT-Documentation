@@ -44,14 +44,16 @@ sensor_mcu: mcu_name
 #    Name of the MCU that the temperature sensor is connected to.
 ```
 
-## [AFC_stepper <lane_name>] Section
+## [AFC_lane lane_name] Section
 
-The following options are available in the `[AFC_stepper <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
+The following options are available in the `[AFC_lane <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
 options control the configuration of the AFC system when interfacing with the stepper motor for the specific unit type.
-You will typically have one of these sections for each lane in the unit.
+You will typically have one of these sections for each lane in the unit.  
+
+Currently AFC_lane sections are only valid for HTLF unit.
 
 ``` cfg
-[AFC_stepper <lane_name>]
+[AFC_lane <lane_name>]
 
 unit: MCU:<lane>
 #    This is the unit name of the stepper motor. This would typically be 
@@ -149,16 +151,35 @@ led_tool_loaded: 0,0,1,0
 #    LED color to set when lane is loaded in toolhead.
 #    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here 
 #    overrides values set in unit(AFC_BoxTurtle/NightOwl/etc) section.
+led_spool_index:
+#    Default: None
+#    Led index for led in chain that illuminates spool, currently only
+#    supports QuattroBox units. This should reference a defined LED in 
+#    the [AFC_Indicator] section. 
+#
+#    Index can have multiple entries in a comma separated list and range 
+#    values also are allowed.
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_spool_illuminate: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units.
 long_moves_speed: 150
 #    Default: 150
 #    Speed in mm/s to move filament when doing long moves. 
 #    Setting value here overrides values set in 
 #    unit(AFC_BoxTurtle/NightOwl/etc) section
+rev_long_moves_speed_factor: 1.0
+#    Default: 1.0
+#    Range: 0.5 to 1.2
+#    Scalar factor multiplied to long_moves_speed when rewinding filament.
+#    Useful when reversing is done using non-assisted systems, e.g. filamentalist
 long_moves_accel: 250
 #    Default: 250
 #    Acceleration in mm/s squared when doing long moves. 
 #    Setting value here overrides values set in 
 #    unit(AFC_BoxTurtle/NightOwl/etc) section
+quiet_moves_speed: 50
+#    Default: 50           
+#    Speed in mm/s. This is the speed cap during quiet moves.
 short_moves_speed: 50
 #    Default: 50
 #    Speed in mm/s to move filament when doing short moves. 
@@ -186,6 +207,57 @@ n20_break_delay_time: 0.200
 #    Time to wait between breaking n20 motors(nSleep/FWD/RWD all 1) 
 #    and then releasing the break to allow coasting. Setting value 
 #    here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+enable_assist: True
+#    Default: True
+#    Enables espooler print assist. Setting value 
+#    here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+enable_assist_weight: 5000
+#    Default: 5000
+#    Number in grams to activate espooler print assist once spool weight is 
+#    less than this number.
+#    Setting value here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc)
+#    section.
+timer_delay: 5
+#    Default: 5
+#    Affects espooler assist, number of seconds to wait before checking 
+#    filament movement for espooler print assist. Setting value here 
+#    overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+enable_kick_start: True
+#    Default: True
+#    Enables full speed espoolers for `kick_start_time` amount to
+#    help spools to start moving. Setting value here overrides values
+#    set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+kick_start_time: 0.070
+#    Default: 0.070
+#    Time in seconds to enable spooler at full speed to help with
+#    getting the spool to spin. Setting value here overrides values set 
+#    in unit (AFC_BoxTurtle/NightOwl/etc) section.
+delta_movement: 150
+#    Default: 150
+#    Affects espooler assist, delta amount in mm to move from last assist
+#    to trigger another assist move. Setting value here overrides values 
+#    set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+mm_movement: 150
+#    Default: 150
+#    Affects espooler assist, amount to move during the assist in mm once 
+#    filament has moved by `delta_movement` amount. Setting value here 
+#    overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+cycles_per_rotation: 1275
+#    Default: 1275
+#    Affects espooler assist, time it takes to in milliseconds to turn 
+#    a spool a full rotation. Setting value here overrides values set 
+#    in unit (AFC_BoxTurtle/NightOwl/etc) section.
+pwm_value: 0.6706
+#    Default: 0.6706
+#    Affects espooler assist, PWM cycle time. Setting value 
+#    here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
+spoolrate: 1.0
+#    Default: 1.0
+#    Scaling factor for the following variables: 
+#      kick_start_time, spool_outer_diameter, cycles_per_rotation, 
+#      pwm_value, delta_movement, mm_movement
+#    Setting value here overrides values set in unit(AFC_BoxTurtle/NightOwl/etc)
+#    section.
 load_to_hub: True
 #    Default: True
 #    Fast loads filament to hub when inserted, set to False to disable. 
@@ -205,11 +277,6 @@ assisted_unload: False
 #    especially on full spools. This can prevent loops from slipping off the 
 #    spool. Setting value here overrides values set in 
 #    unit(AFC_BoxTurtle/NightOwl/etc) section.
-print_current: 0.6
-#    Default: 0.6
-#    Current to use while printing, set to a lower current to reduce stepper 
-#    heat when printing. Defaults to global_print_current, if not specified 
-#    current is not changed.
 filament_diameter: 1.75
 #    Default: 1.75
 #    Diameter of the filament in mm.
@@ -221,7 +288,7 @@ spool_inner_diameter: 100
 #    Inner diameter of the spool in mm.
 spool_outer_diameter: 200
 #    Default: 200 
-#    Outer diameter of the spool in mm.
+#    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
 #    Weight of the empty spool in grams.
@@ -246,6 +313,27 @@ extruder:
 #    overrides extruder that is set in unit(AFC_BoxTurtle/NightOwl/etc) 
 #    section.
 ```
+
+## [AFC_stepper lane_name] Section
+
+The following options are available in the `[AFC_stepper <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when interfacing with the stepper motor for the specific unit type.
+You will typically have one of these sections for each lane in the unit.
+
+AFC_stepper inherits configuration options from AFC_lane configuration section, below are additional configuration values
+for a AFC_stepper sections.  
+
+``` cfg
+
+[AFC_stepper <lane_name>]
+
+print_current: 0.6
+#    Default: 0.6
+#    Current to use while printing, set to a lower current to reduce stepper 
+#    heat when printing. Defaults to global_print_current, if not specified 
+#    current is not changed.
+```
+
 
 ## [tmc2209 AFC_stepper <lane_name>] Section
 
@@ -393,16 +481,65 @@ typically used to define the unit name and other options that are specific to th
 [AFC_BoxTurtle Turtle_1]
 hub:
 #    Default: <none>
-#    Hub name(AFC_hub) that belongs to this unit. can be overriden in 
+#    Hub name(AFC_hub) that belongs to this unit. can be overridden in 
 #    the [AFC_stepper] section.
 extruder:
 #    Default: <none>
 #    Extruder name(AFC_extruder) that belongs to this unit. can be
-#    overriden in the [AFC_stepper] section.
+#    overridden in the [AFC_stepper] section.
 buffer: 
 #    Default: <none>
 #    Buffer name(AFC_buffer) that belongs to this unit. can be
-#    overriden in the [AFC_stepper] section.
+#    overridden in the [AFC_stepper] section.
+enable_assist: True
+#    Default: True
+#    Enables espooler print assist, overrides setting in AFC.cfg file
+#    Can be overridden in the [AFC_stepper] section.
+enable_assist_weight: 5000
+#    Default: 5000
+#    Number in grams to activate espooler print assist once spool weight is 
+#    less than this number.
+#    Can be overridden in the [AFC_stepper] sections.
+timer_delay: 5
+#    Default: 5
+#    Affects espooler assist, number of seconds to wait before 
+#    checking filament movement for espooler print assist
+#    Can be overridden in the [AFC_stepper] section.
+enable_kick_start: True
+#    Default: True
+#    Enables full speed espoolers for `kick_start_time` amount to
+#    help spools to start moving
+#    Can be overridden in the [AFC_stepper] section.
+kick_start_time: 0.070
+#    Default: 0.070
+#    Time in seconds to enable spooler at full speed to help with
+#    getting the spool to spin
+#    Can be overridden in the [AFC_stepper] section.
+delta_movement: 150
+#    Default: 150
+#    Affects espooler assist, delta amount in mm to move from last 
+#    assist to trigger another assist move
+#    Can be overridden in the [AFC_stepper] section.
+mm_movement: 150
+#    Default: 150
+#    Affects espooler assist, amount to move during the assist in mm 
+#    once filament has moved by `delta_movement` amount
+#    Can be overridden in the [AFC_stepper] section.
+cycles_per_rotation: 1275
+#    Default: 1275
+#    Affects espooler assist, time it takes to in milliseconds to turn 
+#    a spool a full rotation
+#    Can be overridden in the [AFC_stepper] section.
+pwm_value: 0.6706
+#    Default: 0.6706
+#    Affects espooler assist, PWM cycle time
+#    Can be overridden in the [AFC_stepper] section.
+spoolrate: 1.0
+#    Default: 1.0
+#    Scaling factor for the following variables: 
+#      kick_start_time, spool_outer_diameter, cycles_per_rotation, 
+#      pwm_value, delta_movement, mm_movement
+#    Can be overridden in the [AFC_stepper] section.
 led_fault: 1,0,0,0
 #    Default: 1,0,0,0
 #    LED color to set when faults occur in lane        
@@ -437,6 +574,11 @@ long_moves_speed: 100
 #    Default: 100
 #    Speed in mm/s to move filament when doing long moves.
 #    Setting value here overrides values set in AFC.cfg file.
+rev_long_moves_speed_factor: 1.0
+#    Default: 1.0
+#    Range: 0.5 to 1.2
+#    Scalar factor multiplied to long_moves_speed when rewinding filament.
+#    Useful when reversing is done using non-assisted systems, e.g. filamentalist
 long_moves_accel: 400
 #    Default: 400
 #    Acceleration in mm/s squared when doing long moves.
@@ -481,79 +623,109 @@ unload_on_runout: False
 The following options are available in the `[AFC_NightOwl unit_name]` section of the `AFC_UnitType_1.cfg` file. These
 options control the configuration of the AFC system when interfacing with the NightOwl unit type. This section is
 typically used to define the unit name and other options that are specific to the NightOwl unit type.
+ 
+
+AFC_NightOwl inherits configuration options from AFC_BoxTurtle configuration section, below are additional configuration values
+for a NightOwl unit.  
 
 ``` cfg
 [AFC_NightOwl NightOwl_1]
-hub:
-#    Default: <none>
-#    Hub name(AFC_hub) that belongs to this unit. can be overriden in 
-#    the [AFC_stepper] section.
-extruder:
-#    Default: <none>
-#    Extruder name(AFC_extruder) that belongs to this unit. can be
-#    overriden in the [AFC_stepper] section.
-buffer: 
-#    Default: <none>
-#    Buffer name(AFC_buffer) that belongs to this unit. can be
-#    overriden in the [AFC_stepper] section.
-led_fault: 1,0,0,0
+```
+
+## [AFC_QuattroBox unit_name] Section
+
+The following options are available in the `[AFC_QuattroBox unit_name]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when interfacing with the AFC_QuattroBox unit type. This section is
+typically used to define the unit name and other options that are specific to the AFC_QuattroBox unit type.  
+
+AFC_QuattroBox inherits configuration options from AFC_BoxTurtle configuration section,, below are additional configuration values
+for a QuattroBox unit.  
+``` cfg
+[AFC_QuattroBox QuattroBox_1]
+led_logo_index:
+#    Default: None
+#    Led index for led in chain that illuminates a logo. This should reference 
+#    a defined LED in the [AFC_Indicator] section.
+#
+#    Index can have multiple entries in a comma separated list and range values
+#    also are allowed
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_logo_color: '0,0,0,0'
+#    Default: '0,0,0,0'
+#    Color to apply to logo. Logo also changes to led_logo_loading color when 
+#    loading a lane and then once a lane is loaded the logo changes to the lanes 
+#    spool color. When nothing is loaded this variable(led_logo_color) is 
+#    applied to logo.
+led_logo_loading: 1,0,0,0
 #    Default: 1,0,0,0
-#    LED color to set when faults occur in lane        
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here 
-#    overrides values set in AFC.cfg file.
-led_ready: 1,1,0,0
-#    Default: 1,1,0,0
-#    LED color to set when lane is ready
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here
-#    overrides values set in AFC.cfg file.
-led_not_ready: 1,1,0,0
-#    Default: 1,1,0,0
-#    LED color to set when lane is not ready
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here
-#    overrides values set in AFC.cfg file.
-led_loading: 1,0,0,0
-#    Default: 1,0,0,0
-#    LED color to set when lane is loading
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here
-#    overrides values set in AFC.cfg file.
-led_unloading: 1,1,.5,0
-#    Default: 1,1,.5,0
-#    LED color to set when lane is unloading
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here
-#    overrides values set in AFC.cfg file.
-led_tool_loaded: 1,1,0,0
-#    Default: 1,1,0,0
-#    LED color to set when lane is loaded in toolhead
-#    (R,G,B,W) 0 = off, 1 = full brightness. Setting value here
-#    overrides values set in AFC.cfg file.
-long_moves_speed: 100
-#    Default: 100
-#    Speed in mm/s to move filament when doing long moves.
-#    Setting value here overrides values set in AFC.cfg file.
-long_moves_accel: 400
-#    Default: 400
-#    Acceleration in mm/s squared when doing long moves.
-#    Setting value here overrides values set in AFC.cfg file.
-short_moves_speed: 25
-#    Default: 25
-#    Speed in mm/s to move filament when doing short moves.
-#    Setting value here overrides values set in AFC.cfg file.
-short_moves_accel: 400
-#    Default: 400
-#    Acceleration in mm/s squared when doing short moves.
-#    Setting value here overrides values set in AFC.cfg file.
-short_move_dis: 400
-#    Default: 400
-#    Move distance in mm for failsafe moves. Setting value
-#    here overrides values set in AFC.cfg file.
-assisted_unload: False
-#    Default: False
-#    If True, the unload retract is assisted to prevent loose windings,
-#    especially on full spools. This can prevent loops from slipping off the
-#    spool. Setting value here overrides values set in AFC.cfg file.
-unload_on_runout: False
-#    Default: False
-#    When True, AFC will unload lane and then pause when runout is 
-#    triggered and spool to swap is not set (infinite spool). Setting
-#    value here overrides values set in AFC.cfg file.
+#    Color to apply to logo when loading a lane, default values defaults to 
+#    led_loading variable
+led_spool_index:
+#    Default: None
+#    Led index for led in chain that illuminates spool. This should reference 
+#    a defined LED in the [AFC_Indicator] section.
+#    Can be overridden per lane in AFC_Stepper section.
+#
+#    Index can have multiple entries in a comma separated list and range values
+#    also are allowed
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
+led_spool_illuminate: 1,1,1,0
+#    Default: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units and
+#    can be overridden in AFC_Stepper section.
+```
+
+## [AFC_HTLF unit_name] Section
+
+The following options are available in the `[AFC_HTLF unit_name]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when interfacing with the AFC_HTLF unit type. This section is
+typically used to define the unit name and other options that are specific to the AFC_HTLF unit type.  
+
+AFC_QuattroBox inherits configuration options from AFC_BoxTurtle configuration section,, below are additional configuration values
+for a QuattroBox unit.  
+``` cfg
+
+[AFC_HTLF HTLF_1]
+drive_stepper:
+#    Name of AFC_stepper for drive motor.
+selector_stepper:
+#    Name of AFC_stepper for selector motor.
+mm_move_per_rotation: 32
+#    Default: 32
+#    How many millimeters move the selector pulley one full rotation.
+cam_angle:
+#    Cam lobe angle thats being used on HTLF. Valid options: 30,45,60 (recommend using 60)
+home_pin:
+#    Pin for homing sensor.
+MAX_ANGLE_MOVEMENT: 215
+#    Default: 215
+#    Max angle to move lobes, this is when lobe 1 is fully engaged with it lane,
+enable_sensors_in_gui: True
+#    Default: True
+#    Set to True to show prep and load sensors switches as filament sensors 
+#    in Mainsail/Fluidd gui, overrides value set in AFC.cfg.
+```
+
+## [servo tool_cut] Section
+
+The following options are available for all units (BoxTurtle, HTLF, and NightOwl) and allow for the configuration and 
+operation of a gantry mounted servo to assist in tool cutting. 
+
+``` cfg
+[servo tool_cut]
+#--=================================================================================--#
+######### Tip Cut Servo ###############################################################
+#--=================================================================================--#
+pin: YOUR_SERVO_PIN_HERE
+#    This should be the MCU/pin combination for the servo pin.
+minimum_pulse_width: 0.00053
+#    Adjust this value until a '_CUTTER_SERVO POS=out' extends the pin 
+#    fully without a buzzing sound.
+maximum_pulse_width: 0.0023
+#    Adjust this value until a '_CUTTER_SERVO POS=in' retracts the pin 
+#    fully without a buzzing sound.
+maximum_servo_angle: 180
+#   Initial angle (in degrees) to set the servo to. The default is to
+#   not send any signal at startup.
+
 ```

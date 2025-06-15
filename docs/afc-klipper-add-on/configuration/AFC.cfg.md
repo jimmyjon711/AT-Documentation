@@ -25,6 +25,11 @@ long_moves_speed: 150
 #    Default: 150     
 #    Speed in mm/s. This is the speed used for long moves, such as when 
 #    loading or unloading filament.
+rev_long_moves_speed_factor: 1.0
+#    Default: 1.0
+#    Range: 0.5 to 1.2
+#    Scalar factor multiplied to long_moves_speed when rewinding filament.
+#    Useful when reversing is done using non-assisted systems, e.g. filamentalist
 long_moves_accel: 250
 #    Default: 250           
 #    Speed in mm/s². This is the acceleration used for long moves.
@@ -32,12 +37,24 @@ short_moves_speed: 50
 #    Default: 50           
 #    Speed in mm/s. This is the speed used for short moves, such as 
 #    when moving the final distance to the toolhead or during calibration.
+quiet_moves_speed: 50
+#    Default: 50           
+#    Speed in mm/s. This is the speed cap during quiet moves.
 short_moves_accel: 300
 #    Default: 300          
 #    Speed in mm/s². This is the acceleration used for short moves.
 short_move_dis: 10
 #    Default: 10              
 #    Move distance for failsafe moves.
+max_move_dis: 99999
+#    Default: 99999
+#    Maximum distance to move filament. AFC breaks filament moves over
+#    this number into multiple moves. Useful to lower this number if
+#    running into timer too close errors when doing long filament moves.
+#    Setting value here overrides values set in AFC.cfg file.
+show_quiet_mode: True
+#    Default: True
+#    Present quiet mode toggle as a filament switch.
 global_print_current: 0.6
 #    Default: 0.6
 #    Uncomment to set stepper motors to a lower current while printing.
@@ -46,13 +63,17 @@ enable_sensors_in_gui: True
 #    Default: False     
 #    Boolean to show all sensor switches as filament sensors in 
 #    the Mainsail/Fluidd gui.
-default_material_temps: default: 235, PLA:210, ABS:235, ASA:235 
+default_material_temps: default: 235, PLA:210, PETG:235, ABS:235, ASA:235 
 #    Default temperature to set extruder when loading/unloading lanes.
 #    Material needs to be either manually set or uses material from spoolman 
 #    if extruder temp is not set in spoolman. Follow current format to 
 #    add more filament types.
 default_material_type: PLA      
 #    Default material type to assign to a spool once loaded into a lane.
+common_density_values: PLA:1.24, PETG:1.23, ABS:1.04, ASA:1.07
+#    Default densities to set for material type when manually setting material with SET_MATERIAL macro.
+#    Density value can also be manually set when setting material and this manual value
+#    will be used instead of default values. 
 load_to_hub: True
 #    Default: True            
 #    Fast loads filament to hub when inserted, set to False to disable. This 
@@ -113,6 +134,9 @@ led_buffer_trailing: 0,1,0,0
 #    Buffer trailing color
 led_buffer_disable: 0,0,0,0.25  
 #    Buffer disable color
+led_spool_illuminate: 1,1,1,0
+#    Loading color to illuminate spool, currently only for QuattroBox units and can be
+#    overridden in AFC_QuattroBox section
 n20_break_delay_time: 0.200
 #    Default: 0.200
 #    Time to wait between breaking n20 motors(nSleep/FWD/RWD all 1) and then 
@@ -121,6 +145,9 @@ tool_max_unload_attempts: 2
 #    Default: 2
 #    Max number of attempts to unload filament from toolhead when using 
 #    buffer as ramming sensor.
+tool_homing_distance: 200
+#    Default: 200
+#    Distance in mm over which toolhead homing is to be attempted. 
 tool_max_load_checks: 4
 #    Default: 4
 #    Max number of attempts to check to make sure filament is loaded into 
@@ -135,7 +162,30 @@ unload_on_runout: False
 #    Default: False
 #    When True AFC will unload lane and then pause when runout is triggered 
 #    and spool to swap to is not set(infinite spool).
-
+print_short_stats: False
+#    Default: False
+#    When True AFC_STATS macro will print out in a skinnier format to better fit
+#    consoles that are smaller in width
+show_macros: True
+#    Default: True
+#    When True, the AFC macros will be shown in the Mainsail/Fluidd GUI.
+error_timeout: 36000
+#    Default: 36000
+#    Time in seconds to pause if AFC encounters an error. This value will be 
+#    overridden if the `[idle_timeout].timeout value is higher.
+auto_home: False
+#    Default: False
+#    Enable to turn on auto homing if printer is not already homed when
+#    loading/unloading a lane.
+enable_assist: True
+#    Default: True
+#    Enables espooler print assist.
+#    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
+enable_assist_weight: 5000
+#    Default: 5000
+#    Number in grams to activate espooler print assist once spool weight is 
+#    less than this number.
+#    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
@@ -159,6 +209,10 @@ tool_cut_cmd: AFC_CUT
 #    Macro name to call when cutting filament. Using the default AFC_CUT macro
 #    will call the macro defined in `Cut.cfg`. You can replace this with a 
 #    custom macro name if you have a different cutting method or tool.
+tool_cut_threshold: 10000
+#    A warning will print out 1,000 cuts before the threshold is hit. Once this
+#    threshold is hit, a message is displayed as an error notifying that the cut
+#    threshold for the current blade has exceeded this threshold.
 
 # Park Settings
 park: True                      
