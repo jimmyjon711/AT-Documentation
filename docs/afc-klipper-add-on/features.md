@@ -145,12 +145,18 @@ hub: direct
 ## Espooler Print Assist
 
 AFC has the ability to activate espooler forward movement when printing to help aid in spools from
-walking around and riding up wheels when they get low. This is enabled by default and can be turned off
-by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.  
+walking around and riding up wheels when they get low. This features is enabled by default once your filament weight gets below 500 grams.  
+
+The goal of this is to enable the spooler for a small amount of time so that filament on the spool is loosened up some,
+then by the time your printer extrudes `mm_movement` amount(defaults to 150) the filament on your spool should just be getting taught before print assist activates again.  
+
+This feature can be turned off by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.
+If you would like to change the weight value where print assist is activated, then add `enable_assist_weight: <new_number>` to your configuration, this value can be add
+to the same sections as `enable_assist` variable. 
 
 The following variables described in [AFC_lane](configuration/AFC_UnitType_1.cfg.md#afc_lane-lane_name-section) section are all
 the values that go into the print assist logic: `enable_assist`, `enable_assist_weight`, `timer_delay`, `delta_movement`, `mm_movement`,
-`cycles_per_rotation`, `pwm_value`, `spoolrate`.
+`cycles_per_rotation`, `pwm_value`, `spoolrate`. The values can be configured per lane (`AFC_Stepper`) or per Unit (`AFC_BoxTurtle`).
 
 With this functionality the following macros allow you to enable/disable and tweak the settings for
 print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
@@ -158,7 +164,7 @@ print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler
 
 If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
 that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
-takes to spin the spool a full rotation.
+takes to spin the spool a full rotation.  
 
 Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
 <table class="espooler" style="font-size: medium">
@@ -169,7 +175,7 @@ td, th{
 }
 </style>
 <thead>
-<tr><th colspan=2>Cruise time when changing spoolrate</th><th colspan=2>Cruise time when changing cycles_per_rotation</th></tr></thead>
+<tr><th colspan=2>Cruise time when ONLY changing spoolrate</th><th colspan=2>Cruise time when ONLY changing cycles_per_rotation</th></tr></thead>
 <tbody>
 <tr><th>spoolrate</th><th>cruise_time</th><th>cycles_per_rotation</th><th>cruise_time</th></tr>
 <tr><td>1  </td><td>0.4593</td><td>1275</td><td>0.4593</td></tr>
