@@ -291,10 +291,10 @@ spool_outer_diameter: 200
 #    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
-#    Weight of the empty spool in grams. The value is pulled automatically if using spoolman.
+#    Weight of the empty spool in grams. This value is pulled automatically if using spoolman.
 spool_weight: 1000
 #    Default: 1000
-#    Remaining filament weight in grams on spools.  The value is pulled automatically if using spoolman.
+#    Remaining filament weight in grams on spools.  This value is pulled automatically if using spoolman.
 assist_max_motor_rpm: 500
 #    Default: 500
 #    Maximum motor RPM for the assist motor (N20).
