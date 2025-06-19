@@ -26,7 +26,7 @@ Each lane merges to a hub (combiner) with a sensor with one outlet that goes to 
 To accommodate any differences in rotation distance between the extruder in the tool head and the lane motors, BoxTurtle
 uses a toolhead buffer, like [TurtleNeck](https://github.com/ArmoredTurtle/TurtleNeck) by ArmoredTurtle.
 
-For best results we recommend the AFC-Lite, developed by [Isik's Tech @xbst](https://github.com/xbst/AFC-Lite/) as it
+For best results we recommend the AFC-Lite or AFC-Pro, developed by [Isik's Tech @xbst](https://github.com/xbst/AFC-Lite/) as it
 has the necessary sensor ports and DC brushed motor drivers used for BoxTurtle's electric respoolers.
 
 ## For best results
@@ -95,11 +95,9 @@ Different filament color transitions will require different purge volumes, and t
 your filaments and prints you are performing.
 
 ## Enclosure
-The enclosure option for BoxTurtle has been moved to
-its [own repository](https://github.com/ArmoredTurtle/BoxTurtle-Enclosure). The enclosure is
-still [under development](https://www.youtube.com/watch?v=Jjgi8q28Y2o), but the most up-to-date information on it can be
-found at that repository. Also considering [joining the ArmoredTurtle Discord](https://discord.gg/eT8zc3bvPR) to get
-progress updates as development progresses.
+The enclosure option for BoxTurtle has been moved to its [own repository](https://github.com/ArmoredTurtle/BoxTurtle-Enclosure). The enclosure is
+available at [LDO resellers](./vendors.md) worldwide and additional information can be found in its GitHub Repository. 
+Also considering [joining the ArmoredTurtle Discord](https://discord.gg/eT8zc3bvPR) to get progress updates as development progresses.
 
 ## Errata
 Identified known issues and potential workarounds are documented in the [errata section](./errata.md).
