@@ -66,6 +66,11 @@ to help with this. Update and uncomment the following values in `~/printer_data/
 - Make sure your stepper names are updated for variables: `variable_cut_current_stepper_x`, 
 - `variable_cut_current_stepper_y`, and `variable_cut_current_stepper_z`.
 
+### "Move out of range" errors when running macros
+`skew_correction` changes the coordinate system and the measures you took without a skew profile will be different than at print time. To solve this issue, use `variable_disable_skew_correction` but make sure you read the [configuration documentation](../afc-klipper-add-on/configuration/AFC_Macro_Vars.cfg.md) first.
+
+
+
 ## General Unreliability
 
 ### Timer Too Close
