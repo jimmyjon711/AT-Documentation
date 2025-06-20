@@ -112,6 +112,7 @@ theme:
     - optimize
 
 plugins:
+  - mkdocs-video
   - search:
       lang: en
   - mkdocs-simple-hooks:
