@@ -14,7 +14,8 @@ dependencies = [
     "mkdocs-redirects==1.2.2",
     "py-gfm>=2.0.0",
     "mkdocstrings[python]",
-    "mkdocs-video"
+    "mkdocs-video",
+    "mkdocs-include-markdown-plugin"
 ]
 
 [dependency-groups]

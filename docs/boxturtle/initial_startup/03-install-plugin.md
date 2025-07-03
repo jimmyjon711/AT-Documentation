@@ -35,5 +35,14 @@ the setting is not there, add it:
 
 `max_extrude_only_distance: 400`
 
+Depending on your configuration, you may also need to add the following line to your `printer.cfg`'s `[extruder]` section:
+
+`max_extruder_cross_section: 50`
+
+However, this should only be added if a warning appears in the logs about the extruder cross-section being too small.
+If you do not see this warning, you can skip this step.
+
+
+
 For best results, reboot your printer after installing the Add-On and including it in your printer.cfg. This will ensure
 all required modules are enabled.
