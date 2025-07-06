@@ -173,7 +173,7 @@ unload_on_runout: False
 print_short_stats: False
 #    Default: False
 #    When True AFC_STATS macro will print out in a skinnier format to better
-#   fit consoles that are smaller in width.
+#    fit consoles that are smaller in width.
 show_macros: True
 #    Default: True
 #    When True, the AFC macros will be shown in the Mainsail/Fluidd GUI.
