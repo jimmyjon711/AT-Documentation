@@ -90,6 +90,10 @@ gear_ratio:
 #    gear_ratio is specified then rotation_distance specifies the
 #    distance the axis travels for one full rotation of the final gear.
 #    The default is to not use a gear ratio.
+map:
+#    Default: None
+#    Used for custom mapping toolchange macros. This can be set to anything
+#    but a normal toolchange macro is normally T(n).
 dist_hub: 60
 #    Default: 60
 #    Bowden distance between Box Turtle extruder and hub.
