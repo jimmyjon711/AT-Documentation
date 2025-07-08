@@ -37,7 +37,7 @@ the setting is not there, add it:
 
 Depending on your configuration, you may also need to add the following line to your `printer.cfg`'s `[extruder]` section:
 
-`max_extruder_cross_section: 50`
+`max_extrude_cross_section: 50`
 
 However, this should only be added if a warning appears in the logs about the extruder cross-section being too small.
 If you do not see this warning, you can skip this step.
