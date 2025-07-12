@@ -11,7 +11,7 @@ crucial for ensuring that the toolhead operates correctly with the AFC system.
 
 These primarily consist of 2 variables:
 
-- `tool_stn`: The distance from the toolhead sensor (typically the pre-extruder sensor) to the top of any filament
+- `tool_stn`: The distance from the toolhead sensor (typically the pre-extruder sensor) or extruder gears (if using ramming) to the top of any filament
    remaining in the hotend. 
 - `tool_stn_unload`: The distance the toolhead needs to move to unload the filament.
 
