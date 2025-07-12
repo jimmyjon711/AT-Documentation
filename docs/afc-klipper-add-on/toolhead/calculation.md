@@ -69,7 +69,7 @@ and use the following steps to fine-tune it:
 4. Using a manual extrude command, retract the filament by a set amount, until the toolhead sensor is no longer triggered.
 
     For example, if your estimated `tool_stn_unload` value is `62mm`, start by issuing a manual retraction for 55mm
-    and then manually retracting 1mm at a time until the toolhead sensor is no longer triggered.
+    and then manually retracting 1mm at a time until the toolhead sensor is no longer triggered. If using ramming retract until filament is out of toolhead extruders gears.
 
 5. Once you have found the value that works, save it to the configuration with the following command:
 
