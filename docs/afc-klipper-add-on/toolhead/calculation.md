@@ -17,7 +17,7 @@ These primarily consist of 2 variables:
 
 ### `tool_stn` Calculation
 
-The `tool_stn` variable is the distance from the toolhead sensor to the top of any filament remaining in the hotend.
+The `tool_stn` variable is the distance from the toolhead sensor/top of extruder gears(ramming) to the top of any filament remaining in the hotend.
 This takes into account the amount of filament that is left in the hotend after the pushback and retract operations of
 the cut macro have been performed. 
 
