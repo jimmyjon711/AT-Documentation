@@ -45,7 +45,7 @@ trusted_clients:
     127.0.0.0/8
 ```
 
-Other entries may be present, and should remain, but please ensure that the `127.0.0.1/8` entry is present. This allows the
+Other entries may be present, and should remain, but please ensure that the `127.0.0.0/8` entry is present. This allows the
 `AFC-Klipper-Add-On` software to communicate with Moonraker without requiring additional authentication.
 
 ### Step 3: Clone the git repository
