@@ -82,9 +82,12 @@ load_to_hub: True
 #    is a global setting and can be overridden at AFC_stepper for individual 
 #    lanes if needed.
 moonraker_port: 7125
-#    Default: <none>     
+#    Default: 7125
 #    Port to connect to when interacting with moonraker. Used when there are 
 #    multiple moonraker/klipper instances on a single host.
+moonraker_host: http://localhost
+#    Default: http://localhost
+#    Host URL to connect to when interacting with moonraker.
 moonraker_timeout: 30
 #    Default: 30
 #    Max time in seconds to keep checking if a valid response is returned
