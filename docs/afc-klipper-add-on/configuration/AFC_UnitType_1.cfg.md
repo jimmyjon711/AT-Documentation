@@ -215,8 +215,8 @@ enable_assist: True
 #    Default: True
 #    Enables espooler print assist. Setting value 
 #    here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
-enable_assist_weight: 5000
-#    Default: 5000
+enable_assist_weight: 500
+#    Default: 500
 #    Number in grams to activate espooler print assist once spool weight is 
 #    less than this number.
 #    Setting value here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc)
@@ -246,8 +246,8 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm once 
 #    filament has moved by `delta_movement` amount. Setting value here 
 #    overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
-cycles_per_rotation: 1275
-#    Default: 1275
+cycles_per_rotation: 800
+#    Default: 800
 #    Affects espooler assist, time it takes to in milliseconds to turn 
 #    a spool a full rotation. Setting value here overrides values set 
 #    in unit (AFC_BoxTurtle/NightOwl/etc) section.
@@ -295,10 +295,10 @@ spool_outer_diameter: 200
 #    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
-#    Weight of the empty spool in grams.
+#    Weight of the empty spool in grams. This value is pulled automatically if using spoolman.
 spool_weight: 1000
 #    Default: 1000
-#    Remaining spool weight in grams.
+#    Remaining filament weight in grams on spools.  This value is pulled automatically if using spoolman.
 assist_max_motor_rpm: 500
 #    Default: 500
 #    Maximum motor RPM for the assist motor (N20).
@@ -499,8 +499,8 @@ enable_assist: True
 #    Default: True
 #    Enables espooler print assist, overrides setting in AFC.cfg file
 #    Can be overridden in the [AFC_stepper] section.
-enable_assist_weight: 5000
-#    Default: 5000
+enable_assist_weight: 500
+#    Default: 500
 #    Number in grams to activate espooler print assist once spool weight is 
 #    less than this number.
 #    Can be overridden in the [AFC_stepper] sections.
@@ -529,8 +529,8 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm 
 #    once filament has moved by `delta_movement` amount
 #    Can be overridden in the [AFC_stepper] section.
-cycles_per_rotation: 1275
-#    Default: 1275
+cycles_per_rotation: 800
+#    Default: 800
 #    Affects espooler assist, time it takes to in milliseconds to turn 
 #    a spool a full rotation
 #    Can be overridden in the [AFC_stepper] section.

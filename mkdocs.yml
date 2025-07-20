@@ -9,6 +9,10 @@ use_directory_urls: False
 nav:
   - Home:
       - index.md
+      - AFC-Klipper-Add-On: afc-klipper-add-on/index.md
+      - BoxTurtle: boxturtle/index.md
+      - AFC-Accessories: afc-accessories/index.md
+      - Troubleshooting: troubleshooting/troubleshooting.md
   - AFC-Klipper-Add-On:
       - Overview: afc-klipper-add-on/index.md
       - Features: afc-klipper-add-on/features.md
@@ -23,6 +27,7 @@ nav:
           - Uninstall Process: afc-klipper-add-on/installation/uninstall-process.md
           - Buffer Overview: afc-klipper-add-on/installation/buffer-overview.md
           - Buffer Ram Sensor: afc-klipper-add-on/installation/buffer-ram-sensor.md
+          - Slicer / PRINT_START Setup: afc-klipper-add-on/installation/slicer-setup.md
       - Configuration:
           - Configuration Overview: afc-klipper-add-on/configuration/configuration_overview.md
           - Configuration Files:
@@ -42,6 +47,8 @@ nav:
           - External Macros: afc-klipper-add-on/klipper/external/macros.md
       - Configuration Examples: afc-klipper-add-on/configuration/configuration_examples.md
       - Calibration Process: afc-klipper-add-on/installation/calibration.md
+      - Toolhead Variable Calculation:
+          - Toolhead Variable Calculation: afc-klipper-add-on/toolhead/calculation.md
   - BoxTurtle:
       - Overview: boxturtle/index.md
       - Printed Parts: boxturtle/printed-parts.md
@@ -112,6 +119,7 @@ theme:
     - optimize
 
 plugins:
+  - mkdocs-video
   - search:
       lang: en
   - mkdocs-simple-hooks:
@@ -125,6 +133,7 @@ plugins:
           options:
             show_source: false
           paths: [./AFC-Klipper-Add-On/extras/]
+  - include-markdown
 
 
 markdown_extensions:
