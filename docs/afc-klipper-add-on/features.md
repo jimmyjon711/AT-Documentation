@@ -106,9 +106,11 @@ not currently loaded as the PURGE_LENGTH from Orca for the first change would be
 
 `T{initial_tool} PURGE_LENGTH=100`
 
-**NOTE: If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
-macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
-your printer**
+!!!warning "Important Note"
+
+    If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
+    macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
+    your printer
 
 ## Spoolman
 
@@ -159,8 +161,12 @@ the values that go into the print assist logic: `enable_assist`, `enable_assist_
 `cycles_per_rotation`, `pwm_value`, `spoolrate`. The values can be configured per lane (`AFC_Stepper`) or per Unit (`AFC_BoxTurtle`).
 
 With this functionality the following macros allow you to enable/disable and tweak the settings for
-print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
-[DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST), [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+print assist. 
+
+- [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES)  
+- [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST)  
+- [DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+- [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)    
 
 If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
 that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
@@ -207,7 +213,7 @@ quiet mode there is a filament switch under your filament sensor called `Quiet M
 a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.  
 
 Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
-`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
+`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-lane_name-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
 
 ## Tracking Toolchange Statistics
 

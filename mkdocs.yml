@@ -47,8 +47,9 @@ nav:
           - External Macros: afc-klipper-add-on/klipper/external/macros.md
       - Configuration Examples: afc-klipper-add-on/configuration/configuration_examples.md
       - Calibration Process: afc-klipper-add-on/installation/calibration.md
-      - Toolhead Variable Calculation:
+      - Tuning Guide:
           - Toolhead Variable Calculation: afc-klipper-add-on/toolhead/calculation.md
+          - Purge Setup: afc-klipper-add-on/toolhead/purge_setup.md
   - BoxTurtle:
       - Overview: boxturtle/index.md
       - Printed Parts: boxturtle/printed-parts.md
@@ -143,6 +144,9 @@ markdown_extensions:
   - pymdownx.blocks.caption
   - pymdownx.details
   - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.critic
+  - pymdownx.mark
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

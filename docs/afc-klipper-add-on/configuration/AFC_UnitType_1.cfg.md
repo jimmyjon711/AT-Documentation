@@ -50,7 +50,7 @@ The following options are available in the `[AFC_lane <lane_name>]` section of t
 options control the configuration of the AFC system when interfacing with the stepper motor for the specific unit type.
 You will typically have one of these sections for each lane in the unit.  
 
-Currently AFC_lane sections are only valid for HTLF unit.
+Currently, AFC_lane sections are only valid for HTLF unit.
 
 ``` cfg
 [AFC_lane <lane_name>]
@@ -325,7 +325,7 @@ options control the configuration of the AFC system when interfacing with the st
 You will typically have one of these sections for each lane in the unit.
 
 AFC_stepper inherits configuration options from AFC_lane configuration section, below are additional configuration values
-for a AFC_stepper sections.  
+for the AFC_stepper sections.  
 
 ``` cfg
 
@@ -344,7 +344,7 @@ print_current: 0.6
 The following options are available in the `[tmc2209 AFC_stepper <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
 options control the configuration of the AFC system when interfacing with the TMC2209 stepper motor driver for the specific unit type.
 
-!!! note
+!!!note
 
     There should be a matching `[tmc2209 AFC_stepper <lane_name>]` section for each `[AFC_stepper <lane_name>]` 
     section in the configuration file.
@@ -365,7 +365,7 @@ sense_resistor: 0.110
 #    and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
 #    or board schematic to confirm the correct value.
 ```
-!!! warning
+!!!warning
 
     Ensure that the `sense_resistor` is set appropriately. Failure to set this appropriately may result in
     overheating of the stepper motor driver and/or stepper motor. This value is typically set to 0.110 for the TMC2209
