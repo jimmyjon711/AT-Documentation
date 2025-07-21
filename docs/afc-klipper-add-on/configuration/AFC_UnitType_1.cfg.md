@@ -295,7 +295,8 @@ spool_outer_diameter: 200
 #    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
-#    Weight of the empty spool in grams. This value is pulled automatically if using spoolman.
+#    Weight of the empty spool in grams. This value is pulled automatically if
+#    using spoolman.
 spool_weight: 1000
 #    Default: 1000
 #    Remaining filament weight in grams on spools.  This value is pulled automatically if using spoolman.
