@@ -50,7 +50,7 @@ The following options are available in the `[AFC_lane <lane_name>]` section of t
 options control the configuration of the AFC system when interfacing with the stepper motor for the specific unit type.
 You will typically have one of these sections for each lane in the unit.  
 
-Currently AFC_lane sections are only valid for HTLF unit.
+Currently, AFC_lane sections are only valid for HTLF unit.
 
 ``` cfg
 [AFC_lane <lane_name>]
@@ -215,8 +215,8 @@ enable_assist: True
 #    Default: True
 #    Enables espooler print assist. Setting value 
 #    here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
-enable_assist_weight: 5000
-#    Default: 5000
+enable_assist_weight: 500
+#    Default: 500
 #    Number in grams to activate espooler print assist once spool weight is 
 #    less than this number.
 #    Setting value here overrides values set in unit (AFC_BoxTurtle/NightOwl/etc)
@@ -246,8 +246,8 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm once 
 #    filament has moved by `delta_movement` amount. Setting value here 
 #    overrides values set in unit (AFC_BoxTurtle/NightOwl/etc) section.
-cycles_per_rotation: 1275
-#    Default: 1275
+cycles_per_rotation: 800
+#    Default: 800
 #    Affects espooler assist, time it takes to in milliseconds to turn 
 #    a spool a full rotation. Setting value here overrides values set 
 #    in unit (AFC_BoxTurtle/NightOwl/etc) section.
@@ -295,10 +295,12 @@ spool_outer_diameter: 200
 #    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
-#    Weight of the empty spool in grams.
+#    Weight of the empty spool in grams. This value is pulled automatically if
+#    using spoolman.
 spool_weight: 1000
 #    Default: 1000
-#    Remaining spool weight in grams.
+#    Remaining filament weight in grams on spools.  This value is pulled automatically
+#    if using spoolman.
 assist_max_motor_rpm: 500
 #    Default: 500
 #    Maximum motor RPM for the assist motor (N20).
@@ -325,7 +327,7 @@ options control the configuration of the AFC system when interfacing with the st
 You will typically have one of these sections for each lane in the unit.
 
 AFC_stepper inherits configuration options from AFC_lane configuration section, below are additional configuration values
-for a AFC_stepper sections.  
+for the AFC_stepper sections.  
 
 ``` cfg
 
@@ -344,7 +346,7 @@ print_current: 0.6
 The following options are available in the `[tmc2209 AFC_stepper <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
 options control the configuration of the AFC system when interfacing with the TMC2209 stepper motor driver for the specific unit type.
 
-!!! note
+!!!note
 
     There should be a matching `[tmc2209 AFC_stepper <lane_name>]` section for each `[AFC_stepper <lane_name>]` 
     section in the configuration file.
@@ -365,7 +367,7 @@ sense_resistor: 0.110
 #    and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
 #    or board schematic to confirm the correct value.
 ```
-!!! warning
+!!!warning
 
     Ensure that the `sense_resistor` is set appropriately. Failure to set this appropriately may result in
     overheating of the stepper motor driver and/or stepper motor. This value is typically set to 0.110 for the TMC2209
@@ -521,8 +523,8 @@ enable_assist: True
 #    Default: True
 #    Enables espooler print assist, overrides setting in AFC.cfg file
 #    Can be overridden in the [AFC_stepper] section.
-enable_assist_weight: 5000
-#    Default: 5000
+enable_assist_weight: 500
+#    Default: 500
 #    Number in grams to activate espooler print assist once spool weight is 
 #    less than this number.
 #    Can be overridden in the [AFC_stepper] sections.
@@ -551,8 +553,8 @@ mm_movement: 150
 #    Affects espooler assist, amount to move during the assist in mm 
 #    once filament has moved by `delta_movement` amount
 #    Can be overridden in the [AFC_stepper] section.
-cycles_per_rotation: 1275
-#    Default: 1275
+cycles_per_rotation: 800
+#    Default: 800
 #    Affects espooler assist, time it takes to in milliseconds to turn 
 #    a spool a full rotation
 #    Can be overridden in the [AFC_stepper] section.

@@ -2,8 +2,10 @@
 
 ## Lane numbering
 
-Lane 1 = leftmost filament lane  
-Lane 4  = rightmost filament lane  
+While looking at the BoxTurtle from the front, the lanes are numbered from left to right.  
+
+Lane 1 = left most filament lane  
+Lane 4  = right most filament lane
 
 ## AFC-Lite Wiring guide
 
@@ -12,6 +14,9 @@ Load = Extruder Filament Sensor Switches
 
 ![BoxTurtle_AFC-Lite_Pinout](../assets/images/boxturtle-afc-lite-pinout.png)
 
+**NOTE**: You need to connect 24V and GND to the CAN bus port pins even if you are connecting using USB-C for 
+data transmission. 
+The AFC-Lite PCB does not support USB Power Delivery.
 !!!warning 
 
     You need to connect 24V and GND to the CAN bus port pins even if you are connecting using USB-C for 
@@ -45,6 +50,11 @@ connector can be used in their place (e.g. Molex Microfit 3).
 | Lane 2 | [N20 6V 500RPM](../assets/images/N20_6V_500RPM.png)                  | 315mm | 26ga | JST-XH-2 |
 | Lane 3 | [N20 6V 500RPM](../assets/images/N20_6V_500RPM.png)                  | 415mm | 26ga | JST-XH-2 |
 | Lane 4 | [N20 6V 500RPM](../assets/images/N20_6V_500RPM.png)                  | 515mm | 26ga | JST-XH-2 |
+
+!!!note
+
+    Switches are assumed to be wired in the normally closed (NC) configuration. Each component listed below is hyperlinked to 
+    an image of the component, with it wired properly. 
 
 ## Trigger (PREP) sensors
 | Lane | Component | Recommended Wire Length | Recommended Wire Gauge | Connector |

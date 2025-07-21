@@ -51,3 +51,10 @@ using a spool tracking system such as [Spoolman](https://github.com/Donkie/Spool
     options:
       docstring_style: numpy
       heading_level: 3
+
+-----
+[SET_NEXT_SPOOL_ID]
+::: AFC_spool.AFCSpool.cmd_SET_NEXT_SPOOL_ID
+    options:
+      docstring_style: numpy
+      heading_level: 3

@@ -33,7 +33,22 @@ With a Debian based system, you can install these prerequisites with the followi
 sudo apt-get install jq crudini git
 ```
 
-### Step 2: Clone the git repository
+### Step 2: Software pre-configuration
+
+The AFC-Klipper-Add-On software interfaces with Moonraker for many functions. To ensure complete compatibility, you should
+ensure that the `moonraker.conf` file is configured correctly. Please ensure that the following is present in the `[authorization]`
+section of your `moonraker.conf` file:
+
+```ini
+
+trusted_clients:
+    127.0.0.0/8
+```
+
+Other entries may be present, and should remain, but please ensure that the `127.0.0.0/8` entry is present. This allows the
+`AFC-Klipper-Add-On` software to communicate with Moonraker without requiring additional authentication.
+
+### Step 3: Clone the git repository
 
 The `AFC-Klipper-Add-On` software is available on GitHub. You can clone the repository with the following command:
 
@@ -47,7 +62,7 @@ The `AFC-Klipper-Add-On` software is available on GitHub. You can clone the repo
 
     Running these commands will clone the `AFC-Klipper-Add-On` repository to your home directory and change to the directory.
 
-### Step 3: Start the installation process
+### Step 4: Start the installation process
 
 From within the `AFC-Klipper-Add-On` directory, you can start the installation process with the following command:
 
