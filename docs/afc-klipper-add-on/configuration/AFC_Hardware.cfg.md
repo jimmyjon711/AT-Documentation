@@ -8,7 +8,7 @@ of the AFC-Klipper-Add-On.
 
 ## [AFC_extruder extruder] Section
 
-The following options are available in the `[AFC_extruder extruder]` section of the `AFC.cfg` file. These options 
+The following options are available in the `[AFC_extruder extruder]` section of the `AFC_Hardware.cfg` file. These options 
 control the configuration of the AFC system when interfacing with the extruder / toolhead.
 
 !!! note
@@ -54,7 +54,7 @@ enable_sensors_in_gui: False
 ``` 
 
 ## [AFC_buffer buffer_name] Section
-The following options are available in the `[AFC_buffer buffer_name]` section of the `AFC.cfg` file. These options
+The following options are available in the `[AFC_buffer buffer_name]` section of the `AFC_Hardware.cfg` file. These options
 control the configuration of the AFC system when interfacing with the filament buffer.
 
 ``` cfg
@@ -79,7 +79,7 @@ accel: 0
 
 ## [AFC_led Buffer_Indicator] Section
 
-The following options are available in the `[AFC_led Buffer_Indicator]` section of the `AFC.cfg` file. These options
+The following options are available in the `[AFC_led Buffer_Indicator]` section of the `AFC_Hardware.cfg` file. These options
 control the configuration of the AFC system when interfacing with the buffer LED.
 
 ``` cfg
