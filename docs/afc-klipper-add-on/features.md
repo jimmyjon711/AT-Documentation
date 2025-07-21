@@ -234,8 +234,8 @@ of cuts performed, number of cuts since blade last changed and how long N20 moto
 N20 are configured in your setup.  
 
 AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you 
-know that it's getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message 
-in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
+know that it's getting close to change blade. Once number of cuts exceed threshold AFC starts printing out error messages 
+in the console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
 
 Use the following macros to print out statistics in console, update when blade has been changes and reset
 N20 active time:  
@@ -265,13 +265,13 @@ An optional feature that can be supported is the use of physical buttons to cont
 
 If enabled, and configured properly, the following functionality can be controlled via buttons:
 
-Press >1.2 (long-press) seconds commands as follows:
+Press <1.2 (short-press) seconds commands as follows:
 
 - If no lane is loaded to tool head it will load commanded lane.
 - If lane loaded to tool head is other than commanded lane it will unload other lane and load commanded lane.
 - If commanded; lane is loaded to tool head it will automatically unload lane
 
-Press <1.2 (short-press) seconds commands as follows:
+Press >1.2 (long-press) seconds commands as follows:
 
 - If lane is loaded to tool head it will unload lane and eject spool
 - If another lane is loaded to tool head it will only eject commanded lane and not interrupt other lanes.
@@ -280,4 +280,4 @@ BOM:
 
 - 4ea Omron B3F-1026 switches/Optional verified off brand switches Amazon https://a.co/d/hmtJkk8
 - 4ea JST 3 pin male connectors for AFC Lite board
-- 3- Meters of 24awg or 28awg wire (your choice)
+- 3 Meters of 24awg or 28awg wire (your choice)
