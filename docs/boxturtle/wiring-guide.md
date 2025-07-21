@@ -2,17 +2,20 @@
 
 ## Lane numbering
 
-Lane 1 = leftmost filament lane\
-Lane 4  = rightmost filament lane
+Lane 1 = leftmost filament lane  
+Lane 4  = rightmost filament lane  
 
 ## AFC-Lite Wiring guide
 
-Prep = Trigger Filament Sensor Switches\
-Load = Extruder Filament Sensor Switches
+Prep = Trigger Filament Sensor Switches  
+Load = Extruder Filament Sensor Switches  
 
 ![BoxTurtle_AFC-Lite_Pinout](../assets/images/boxturtle-afc-lite-pinout.png)
 
-**NOTE**: You need to connect 24V and GND to the CAN bus port pins even if you are connecting using USB-C for data transmission. The AFC-Lite PCB does not support USB Power Delivery.
+!!!warning 
+
+    You need to connect 24V and GND to the CAN bus port pins even if you are connecting using USB-C for 
+    data transmission. The AFC-Lite PCB does not support USB Power Delivery.
 
 ## Extruder Steppers
 | Lane | Recommended Wire Length | Recommended Wire Gauge | Connector |
@@ -23,7 +26,9 @@ Load = Extruder Filament Sensor Switches
 | Lane 4 | 520mm | Dependent on motor | JST-XH-4 |
 
 ##  Indicator LEDs
-The default configuration of the LED indicators is to create a neopixel chain of 4 LEDs, using DOUT on one LED to go to DIN of the next LED. JST-SM connectors are spec'd to provide easy disconnect for lane service, but any wire-to-wire connector can be used in their place (e.g. Molex Microfit 3).
+The default configuration of the LED indicators is to create a neopixel chain of 4 LEDs, using DOUT on one LED to go to 
+DIN of the next LED. JST-SM connectors are spec'd to provide easy disconnect for lane service, but any wire-to-wire 
+connector can be used in their place (e.g. Molex Microfit 3).
 
 | Lane | Component                                     | Recommended Wire Length | Recommended Wire Gauge | Connector                                               |
 | ---- |-----------------------------------------------| --------- | ------------|---------------------------------------------------------|
