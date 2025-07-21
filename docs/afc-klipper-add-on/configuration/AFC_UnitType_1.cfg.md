@@ -477,6 +477,28 @@ color_order: GRB
 #    sporadic behavior of the LEDs.
 ```
 
+## [AFC_button lane_name] Section
+
+The following options are available in the `[AFC_button lane_name]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when using optional hardware buttons to control various functionality
+for each lane. Each lane may have its own button configuration, or you may have any combination of lanes configured.
+
+``` cfg
+[AFC_button lane1]
+pin: 
+#    Default: <none>
+#    The pin that the switch is connected for the specified lane. 
+#    This will typically look like `^!Turtle_1:SW6` or any valid
+#    MCU/pin combination. Ensure that you include pull-up(^) and invert(!).
+long_press_duration:
+#    Default: 1.2
+#    The duration in seconds that the button must be pressed to
+#    trigger a long press event. This is used to differentiate between
+#    a short press and a long press. 
+```
+
+More information on the configuration for this is available [here](../features.md).
+
 ## [AFC_BoxTurtle unit_name] Section
 
 The following options are available in the `[AFC_BoxTurtle unit_name]` section of the `AFC_UnitType_1.cfg` file. These
