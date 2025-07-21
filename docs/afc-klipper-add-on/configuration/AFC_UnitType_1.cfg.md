@@ -299,7 +299,8 @@ empty_spool_weight: 190
 #    using spoolman.
 spool_weight: 1000
 #    Default: 1000
-#    Remaining filament weight in grams on spools.  This value is pulled automatically if using spoolman.
+#    Remaining filament weight in grams on spools.  This value is pulled automatically
+#    if using spoolman.
 assist_max_motor_rpm: 500
 #    Default: 500
 #    Maximum motor RPM for the assist motor (N20).
