@@ -24,10 +24,12 @@ Two sensor TurtleNeck-style buffers are used to modulate the rotation distance o
 The buffer's expansion or compression increases or decreases the rotation distance. 
 
 * If the `trailing` sensor is triggered, this means that the buffer is compressed, the AFC will decrease rotation 
-distance in order to move the filament quicker to the primary extruder. 
+distance in order to move the filament quicker to the primary extruder. When this `trailing` sensor is triggered, the system
+goes into an `advancing` state.
 
 * If the `advance` sensor is triggered, this means that the buffer is expanded, the AFC will increase rotation 
-distance in order to slow the filament moving to the primary extruder.
+distance in order to slow the filament moving to the primary extruder. When this `advanced` sensor is triggered, the system
+goes into a `trailing` state.
 
 ### Turtleneck 1.0
 

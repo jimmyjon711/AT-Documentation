@@ -192,8 +192,8 @@ enable_assist: True
 #    Default: True
 #    Enables espooler print assist.
 #    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
-enable_assist_weight: 5000
-#    Default: 5000
+enable_assist_weight: 500
+#    Default: 500
 #    Number in grams to activate espooler print assist once spool weight is 
 #    less than this number.
 #    Can be overridden in the [AFC_Boxturtle/AFC_NightOwl etc] sections.
