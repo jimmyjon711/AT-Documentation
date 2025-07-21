@@ -129,6 +129,8 @@ server: http://192.168.1.184:7912
 sync_rate: 5
 ```
 
+Support for QR scanners is provided through [SET_NEXT_SPOOL_ID](klipper/internal/spool.md#AFC_spool.AFCSpool.cmd_SET_NEXT_SPOOL_ID). A USB QR code scanner implementation [afc-spool-scan](https://github.com/kekiefer/afc-spool-scan) is available to install on the klipper host.
+
 ## Direct Drive
 
 AFC has the ability to use direct loading straight to the extruder/toolhead. There should be no hub in-between that 
