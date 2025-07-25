@@ -50,7 +50,7 @@ The following options are available in the `[AFC_lane <lane_name>]` section of t
 options control the configuration of the AFC system when interfacing with the stepper motor for the specific unit type.
 You will typically have one of these sections for each lane in the unit.  
 
-Currently AFC_lane sections are only valid for HTLF unit.
+Currently, AFC_lane sections are only valid for HTLF unit.
 
 ``` cfg
 [AFC_lane <lane_name>]
@@ -90,6 +90,10 @@ gear_ratio:
 #    gear_ratio is specified then rotation_distance specifies the
 #    distance the axis travels for one full rotation of the final gear.
 #    The default is to not use a gear ratio.
+map:
+#    Default: None
+#    Used for custom mapping toolchange macros. This can be set to anything
+#    but a normal toolchange macro is normally T(n).
 dist_hub: 60
 #    Default: 60
 #    Bowden distance between Box Turtle extruder and hub.
@@ -291,10 +295,12 @@ spool_outer_diameter: 200
 #    Outer diameter of the spool in mm. Affects espooler assist logic
 empty_spool_weight: 190
 #    Default: 190
-#    Weight of the empty spool in grams. This value is pulled automatically if using spoolman.
+#    Weight of the empty spool in grams. This value is pulled automatically if
+#    using spoolman.
 spool_weight: 1000
 #    Default: 1000
-#    Remaining filament weight in grams on spools.  This value is pulled automatically if using spoolman.
+#    Remaining filament weight in grams on spools.  This value is pulled automatically
+#    if using spoolman.
 assist_max_motor_rpm: 500
 #    Default: 500
 #    Maximum motor RPM for the assist motor (N20).
@@ -321,7 +327,7 @@ options control the configuration of the AFC system when interfacing with the st
 You will typically have one of these sections for each lane in the unit.
 
 AFC_stepper inherits configuration options from AFC_lane configuration section, below are additional configuration values
-for a AFC_stepper sections.  
+for the AFC_stepper sections.  
 
 ``` cfg
 
@@ -340,7 +346,7 @@ print_current: 0.6
 The following options are available in the `[tmc2209 AFC_stepper <lane_name>]` section of the `AFC_UnitType_1.cfg` file. These
 options control the configuration of the AFC system when interfacing with the TMC2209 stepper motor driver for the specific unit type.
 
-!!! note
+!!!note
 
     There should be a matching `[tmc2209 AFC_stepper <lane_name>]` section for each `[AFC_stepper <lane_name>]` 
     section in the configuration file.
@@ -361,7 +367,7 @@ sense_resistor: 0.110
 #    and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
 #    or board schematic to confirm the correct value.
 ```
-!!! warning
+!!!warning
 
     Ensure that the `sense_resistor` is set appropriately. Failure to set this appropriately may result in
     overheating of the stepper motor driver and/or stepper motor. This value is typically set to 0.110 for the TMC2209
@@ -470,6 +476,28 @@ color_order: GRB
 #    proper color order is set. An incorrect value may result in 
 #    sporadic behavior of the LEDs.
 ```
+
+## [AFC_button lane_name] Section
+
+The following options are available in the `[AFC_button lane_name]` section of the `AFC_UnitType_1.cfg` file. These
+options control the configuration of the AFC system when using optional hardware buttons to control various functionality
+for each lane. Each lane may have its own button configuration, or you may have any combination of lanes configured.
+
+``` cfg
+[AFC_button lane1]
+pin: 
+#    Default: <none>
+#    The pin that the switch is connected for the specified lane. 
+#    This will typically look like `^!Turtle_1:SW6` or any valid
+#    MCU/pin combination. Ensure that you include pull-up(^) and invert(!).
+long_press_duration:
+#    Default: 1.2
+#    The duration in seconds that the button must be pressed to
+#    trigger a long press event. This is used to differentiate between
+#    a short press and a long press. 
+```
+
+More information on the configuration for this is available [here](../features.md).
 
 ## [AFC_BoxTurtle unit_name] Section
 

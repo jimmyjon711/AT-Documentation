@@ -29,7 +29,8 @@ rev_long_moves_speed_factor: 1.0
 #    Default: 1.0
 #    Range: 0.5 to 1.2
 #    Scalar factor multiplied to long_moves_speed when rewinding filament.
-#    Useful when reversing is done using non-assisted systems, e.g. filamentalist
+#    Useful when reversing is done using non-assisted systems, 
+#    e.g. filamentalist
 long_moves_accel: 250
 #    Default: 250           
 #    Speed in mm/s². This is the acceleration used for long moves.
@@ -71,18 +72,28 @@ default_material_temps: default: 235, PLA:210, PETG:235, ABS:235, ASA:235
 default_material_type: PLA      
 #    Default material type to assign to a spool once loaded into a lane.
 common_density_values: PLA:1.24, PETG:1.23, ABS:1.04, ASA:1.07
-#    Default densities to set for material type when manually setting material with SET_MATERIAL macro.
-#    Density value can also be manually set when setting material and this manual value
-#    will be used instead of default values. 
+#    Default densities to set for material type when manually setting material
+#    with SET_MATERIAL macro. Density value can also be manually set when 
+#    setting material and this manual value will be used instead of default
+#    values. 
 load_to_hub: True
 #    Default: True            
 #    Fast loads filament to hub when inserted, set to False to disable. This 
 #    is a global setting and can be overridden at AFC_stepper for individual 
 #    lanes if needed.
 moonraker_port: 7125
-#    Default: <none>     
+#    Default: 7125
 #    Port to connect to when interacting with moonraker. Used when there are 
 #    multiple moonraker/klipper instances on a single host.
+moonraker_host: http://localhost
+#    Default: http://localhost
+#    Host URL to connect to when interacting with moonraker.
+moonraker_timeout: 30
+#    Default: 30
+#    Max time in seconds to keep checking if a valid response is returned
+#    from moonraker. During PREP routine AFC will keep checking every second
+#    until timeout is hit or a valid response is returned from moonraker before
+#    moving on and preforming the rest of PREP.
 assisted_unload: True
 #    Default: <none> 
 #    If True, the unload retract is assisted to prevent loose windings, 
@@ -135,8 +146,8 @@ led_buffer_trailing: 0,1,0,0
 led_buffer_disable: 0,0,0,0.25  
 #    Buffer disable color
 led_spool_illuminate: 1,1,1,0
-#    Loading color to illuminate spool, currently only for QuattroBox units and can be
-#    overridden in AFC_QuattroBox section
+#    Loading color to illuminate spool, currently only for QuattroBox units 
+#    and can be overridden in AFC_QuattroBox section
 n20_break_delay_time: 0.200
 #    Default: 0.200
 #    Time to wait between breaking n20 motors(nSleep/FWD/RWD all 1) and then 
@@ -164,8 +175,8 @@ unload_on_runout: False
 #    and spool to swap to is not set(infinite spool).
 print_short_stats: False
 #    Default: False
-#    When True AFC_STATS macro will print out in a skinnier format to better fit
-#    consoles that are smaller in width
+#    When True AFC_STATS macro will print out in a skinnier format to better
+#    fit consoles that are smaller in width.
 show_macros: True
 #    Default: True
 #    When True, the AFC macros will be shown in the Mainsail/Fluidd GUI.

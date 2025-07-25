@@ -39,6 +39,7 @@ variable_stepper_name                    : 'lane'
 variable_travel_speed                    : '120'
 variable_z_travel_speed                  : '30'
 variable_accel                           : '1000'
+variable_disable_skew_correction         : False
 variable_verbose                         : '1'
 ```
 
@@ -85,6 +86,19 @@ variable_verbose                         : '1'
     This value is typically lower than your acceleration that is used on your printer in order to ensure
     accuracy and prevent any issues. This value is usually set by defining a temporary acceleration limit
     such as `SET_VELOCITY_LIMIT ACCEL={variable_accel}`.
+
+-----
+=== "variable_disable_skew_correction"
+    Default: `False`  
+    When True macros will disable and re-enable skew compensation while performing kinematic actions, useful if you took your measurements before loading your skew profiles which may limit where the toolhead can go during print.
+
+=== "Example"
+    Your `print_start` macro might set a skew profile correction. In such case the travel of the toolhead may get limited and not reach your filament cutter or brush, etc.
+    You may also run into issues with `Move out of range` errors because the requested kinematic moves are out of the defined limits after the correction. A last scenerio is that you may not have had the `skew_profile` loaded when taking the measurements so they are offset to what they would be at print time.
+
+    This feature solves these issues by disabling skew_correction before any kinematic move and re-enabling it after the kinematic move.
+    
+    If you set this to true, make sure you set your skew profile in `print_start` before any AFC/BT macros get called. During setup, take your measurements without the profile set. If you are unsure you can run `GET_CURRENT_SKEW` to see if you have values, if you do, you can clear them by running `SET_SKEW CLEAR=1` before you take any measurements for the depressor, brush, park, etc.
 
 -----
 === "variable_verbose"

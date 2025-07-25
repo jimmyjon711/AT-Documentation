@@ -56,8 +56,12 @@ allow you to either show both sensors or just prep/load sensors by using `sensor
 
 AFC has the ability to keep track of number of tool changes when doing multicolor prints. Number of toolchanges
 will be pulled from files metadata stored in moonraker. AFC will keep track of tool changes and print out the 
-current tool change number when a T(n) command is called from gcode. Make sure moonraker version is at least v0.9.3-64 to
-utilize this feature.  
+current tool change number when a T(n) command is called from gcode. 
+
+
+!!!note "Minimum Moonraker Version Required"
+
+    Make sure moonraker version is at least v0.9.3-64 to utilize this feature.  
 
 If you have set up your `Change filament G-code` section to use `SET_AFC_TOOLCHANGES` in your slicer please remove
 the following lines:
@@ -106,9 +110,11 @@ not currently loaded as the PURGE_LENGTH from Orca for the first change would be
 
 `T{initial_tool} PURGE_LENGTH=100`
 
-**NOTE: If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
-macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
-your printer**
+!!!warning "Important Note"
+
+    If your first filament is not currently loaded and needs to change, `PURGE_LENGTH` will be zero and the poop
+    macro will then use `variable_purge_length` from AFC_Macro_Vars.cfg file, so make sure this is set correctly for
+    your printer
 
 ## Spoolman
 
@@ -129,6 +135,12 @@ server: http://192.168.1.184:7912
 sync_rate: 5
 ```
 
+### Spoolman QR Scanner Support
+
+Support for QR scanners is provided through [SET_NEXT_SPOOL_ID](klipper/internal/spool.md#AFC_spool.AFCSpool.cmd_SET_NEXT_SPOOL_ID). 
+
+A USB QR code scanner implementation [afc-spool-scan](https://github.com/kekiefer/afc-spool-scan) is available to install on the klipper host.
+
 ## Direct Drive
 
 AFC has the ability to use direct loading straight to the extruder/toolhead. There should be no hub in-between that 
@@ -145,26 +157,32 @@ hub: direct
 ## Espooler Print Assist
 
 AFC has the ability to activate espooler forward movement when printing to help aid in spools from
-walking around and riding up wheels when they get low. This features is enabled by default once your filament weight gets below 500 grams.  
+walking around and riding up wheels when they get low. This feature is enabled by default once your filament weight 
+gets below 500 grams.  
 
 The goal of this is to enable the spooler for a small amount of time so that filament on the spool is loosened up some,
-then by the time your printer extrudes `mm_movement` amount(defaults to 150) the filament on your spool should just be getting taught before print assist activates again.  
+then by the time your printer extrudes `mm_movement` amount(defaults to 150) the filament on your spool should just be 
+getting taught before print assist activates again.  
 
 This feature can be turned off by adding `enable_assist: False` to your `[AFC_BoxTurtle Turtle_(n)]` or `[AFC]` or per `[AFC_Stepper]` config sections.
-If you would like to change the weight value where print assist is activated, then add `enable_assist_weight: <new_number>` to your configuration, this value can be add
-to the same sections as `enable_assist` variable. 
+If you would like to change the weight value where print assist is activated, then add `enable_assist_weight: <new_number>` 
+to your configuration, this value can be added to the same sections as `enable_assist` variable. 
 
 The following variables described in [AFC_lane](configuration/AFC_UnitType_1.cfg.md#afc_lane-lane_name-section) section are all
 the values that go into the print assist logic: `enable_assist`, `enable_assist_weight`, `timer_delay`, `delta_movement`, `mm_movement`,
 `cycles_per_rotation`, `pwm_value`, `spoolrate`. The values can be configured per lane (`AFC_Stepper`) or per Unit (`AFC_BoxTurtle`).
 
 With this functionality the following macros allow you to enable/disable and tweak the settings for
-print assist. [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES), [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST), 
-[DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST), [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+print assist. 
 
-If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or `cycles_per_rotation` to decrease the time
-that the N20 motors are active( aka cruise_time ). Spoolrate scales all variables by that amount and cycles_per_rotation controls how long in milliseconds it 
-takes to spin the spool a full rotation.  
+- [SET_ESPOOLER_VALUES](klipper/internal/lane.md#AFC_assist.Espooler.cmd_SET_ESPOOLER_VALUES)  
+- [ENABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_ENABLE_ESPOOLER_ASSIST)  
+- [DISABLE_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)  
+- [TEST_ESPOOLER_ASSIST](klipper/internal/lane.md#AFC_assist.Espooler.cmd_DISABLE_ESPOOLER_ASSIST)    
+
+If the default values for print assist is unspooling too much you can start off by changing either `spoolrate` or 
+`cycles_per_rotation` to decrease the time that the N20 motors are active( aka cruise_time ). Spoolrate scales all 
+variables by that amount and cycles_per_rotation controls how long in milliseconds it takes to spin the spool a full rotation.  
 
 Below is a chart with calculations that shows what `cruise_time` will end up being if either `spoolrate` or `cycles_per_rotation` is changed  
 <table class="espooler" style="font-size: medium">
@@ -207,7 +225,7 @@ quiet mode there is a filament switch under your filament sensor called `Quiet M
 a slower speed(default: 50mm/s). Quiet mode speed does not apply to PTFE calibrations and lane resets.  
 
 Speed for quiet mode can be updated by setting `quiet_moves_speed` variable in either `[AFC]` section, or 
-`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
+`[AFC_stepper <name>]` [section](configuration/AFC_UnitType_1.cfg.md#afc_stepper-lane_name-section) (adding here override setting in `[AFC]` [section](configuration/AFC.cfg.md#afc-section)).
 
 ## Tracking Toolchange Statistics
 
@@ -215,7 +233,9 @@ AFC tracks all toolchanges, lane loading/unloading, number of changes since last
 of cuts performed, number of cuts since blade last changed and how long N20 motors have been active if
 N20 are configured in your setup.  
 
-AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you know that its getting close to change blade. Once number of cuts exceed threshold AFC start printing out error message in console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
+AFC will also start warning in console when your number of blade cuts is 1k less than the tool cut threshold letting you 
+know that it's getting close to change blade. Once number of cuts exceed threshold AFC starts printing out error messages 
+in the console. If blade is changed use `AFC_CHANGE_BLADE` macro to reset count and date blade was changed.  
 
 Use the following macros to print out statistics in console, update when blade has been changes and reset
 N20 active time:  
@@ -230,3 +250,34 @@ Both variables can be added/updated in `[AFC]` [section](configuration/AFC.cfg.m
 Examples of what statistics printout looks like:  
 ![stats_normal](../assets/images/afc_stats_wide.png)
 ![stats_short](../assets/images/afc_stats_short.png)
+
+## Button controls
+
+!!!note "Original Design"
+
+    The original design of this feature was created by @Trev1Ak and is available [here](https://discord.com/channels/1229586267671629945/1327060485408952340).
+
+    This feature is now built into the AFC-Klipper-Add-On and can be enabled by following the instructions below.
+
+    Do **NOT** use the provided Klipper config file from the original design, as it is not compatible with the AFC-Klipper-Add-On.
+
+An optional feature that can be supported is the use of physical buttons to control various functionality of the AFC system.
+
+If enabled, and configured properly, the following functionality can be controlled via buttons:
+
+Press <1.2 (short-press) seconds commands as follows:
+
+- If no lane is loaded to tool head it will load commanded lane.
+- If lane loaded to tool head is other than commanded lane it will unload other lane and load commanded lane.
+- If commanded; lane is loaded to tool head it will automatically unload lane
+
+Press >1.2 (long-press) seconds commands as follows:
+
+- If lane is loaded to tool head it will unload lane and eject spool
+- If another lane is loaded to tool head it will only eject commanded lane and not interrupt other lanes.
+
+BOM: 
+
+- 4ea Omron B3F-1026 switches/Optional verified off brand switches Amazon https://a.co/d/hmtJkk8
+- 4ea JST 3 pin male connectors for AFC Lite board
+- 3 Meters of 24awg or 28awg wire (your choice)

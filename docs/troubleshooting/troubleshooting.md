@@ -66,6 +66,11 @@ to help with this. Update and uncomment the following values in `~/printer_data/
 - Make sure your stepper names are updated for variables: `variable_cut_current_stepper_x`, 
 - `variable_cut_current_stepper_y`, and `variable_cut_current_stepper_z`.
 
+### "Move out of range" errors when running macros
+`skew_correction` changes the coordinate system and the measures you took without a skew profile will be different than at print time. To solve this issue, use `variable_disable_skew_correction` but make sure you read the [configuration documentation](../afc-klipper-add-on/configuration/AFC_Macro_Vars.cfg.md) first.
+
+
+
 ## General Unreliability
 
 ### Timer Too Close
@@ -112,3 +117,19 @@ make
 ```
 
 Once the new katapult firmware is built, you can flash it to the AFC-Lite, and then proceed with flashing Klipper as normal.
+
+
+## Mainsail Fork 
+
+### AFC sections not showing up correctly
+
+If you have the AFC Mainsail fork installed and the AFC sections are not showing up correctly, you may need to force 
+reload your browser with one of the following commands depending on your browser / OS:
+
+| Operating System | Browser | Key Combination  |
+|------------------|---------|------------------|
+| Windows          | Chrome  | ++ctrl+f5++      |
+| Windows          | Firefox | ++ctrl+f5++      |
+| MacOS            | Chrome  | ++cmd+shift+r++  |
+| MacOS            | Firefox | ++cmd+shift+r++  |
+| MacOS            | Safari  | ++cmd+option+r++ |
