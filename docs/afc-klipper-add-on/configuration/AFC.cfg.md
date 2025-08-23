@@ -205,6 +205,11 @@ debounce_delay: 0
 #
 #    This value can be overridden in AFC_extruder, AFC_hub, AFC_lane, AFC_stepper
 #    config sections.
+test_extrude_amt: 10
+#    Default: 10
+#    Amount in mm to extrude when use the `AFC_TEST_LANES` calibration
+#    command. This is typically sufficient when using the `POOP` macro;
+#    however, it may need to be adjusted otherwise.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
