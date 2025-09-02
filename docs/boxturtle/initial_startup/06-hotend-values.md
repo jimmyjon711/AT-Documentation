@@ -41,13 +41,6 @@ Below is an example diagram of a Revo Voron hotend on FilamATrix/Clockwork 2:
     - `variable_retract_length`: 20
     - `variable_pushback_length`: 10
 
-=== "Jabberwocky"
-
-    - `tool_stn`: 27.23
-    - `tool_stn_unload`: 96.8
-    - `variable_retract_length`: 21
-    - `variable_pushback_length`: 12.45
-
 === "Dragon ACE with UHF <br>mini holder / 3mm spacer"
 
     - `tool_stn`: 60
@@ -185,3 +178,12 @@ Below is an example diagram of a Revo Voron hotend on FilamATrix/Clockwork 2:
     - `tool_stn_unload`: 60
     - `variable_retract_length`: 12
     - `variable_pushback_length`: 5
+------
+
+#### Jabberwocky
+=== "Phaetus Conch"
+
+    - `tool_stn`: 27.23
+    - `tool_stn_unload`: 96.8
+    - `variable_retract_length`: 21
+    - `variable_pushback_length`: 12.45
