@@ -212,8 +212,8 @@ test_extrude_amt: 10
 #    however, it may need to be adjusted otherwise.
 capture_td1_when_loaded: False
 #    Default: False
-#    When set to True and TD1 device is correctly configured in moonraker, 
-#    when filament is loaded into a lane AFC will move filament to TD1 device
+#    When set to True and TD-1 device is correctly configured in moonraker, 
+#    when filament is loaded into a lane AFC will move filament to TD-1 device
 #    to capture TD and color.
 #
 #    This is a global setting and can be overridden in unit specific sections
@@ -315,7 +315,7 @@ disable_unload_filament_remapping: False
 #    macro.
 capture_td1_data: False
 #    Default: False
-#    When set to True TD1 device is correctly configured in moonraker, AFC will 
+#    When set to True TD-1 device is correctly configured in moonraker, AFC will 
 #    capture TD and color per lane upon first boot if hub is clear and a lane
 #    is not loaded to toolhead.
 ```

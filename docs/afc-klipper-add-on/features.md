@@ -297,5 +297,5 @@ Runout detection can be turned off while printing by disabling sensor in web gui
 Example of runout enabled/disabled:
 ![runout_enabled_disabled](../assets/images/runout_switch.png)
 
-## TD1 Support
-AFC has the ability to grab data from TD1 devices that are connected to your printer. More information about this and setting it up can be found under [TD1](td1.md) section.
+## TD-1 Support
+AFC has the ability to grab data from TD-1 devices that are connected to your printer. More information about this and setting it up can be found under [TD-1](td1.md) section.

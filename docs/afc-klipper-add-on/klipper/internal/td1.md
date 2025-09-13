@@ -1,6 +1,6 @@
-## TD1 Related Commands
+## TD-1 Related Commands
 
-These commands are used calibrate TD1 device(s) and capture TD and color from TD1 devices. These commands are only valid/show up if TD1 device is configured in moonraker.
+These commands are used calibrate TD-1 device(s) and capture TD and color from TD-1 devices. These commands are only valid/show up if TD-1 device is configured in moonraker.
 
 -----
 [AFC_GET_TD_ONE_DATA]
