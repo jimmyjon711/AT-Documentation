@@ -299,3 +299,10 @@ Example of runout enabled/disabled:
 
 ## TD-1 Support
 AFC has the ability to grab data from TD-1 devices that are connected to your printer. More information about this and setting it up can be found under [TD-1](td1.md) section.
+
+## Exposing Lane Data for Third-Parties
+As of version <insert version here>, Moonraker has the ability to push lane information so that third-parties(like OrcaSlicer) can grab this information and use it. To enabled this add the following to your moonraker.conf file and restart your printer.
+```
+[lane_data]
+```
+To verify that this is working, query `http://<printer_ip>/machine/lane_data` endpoint in your browser and you should see lane information populated.
