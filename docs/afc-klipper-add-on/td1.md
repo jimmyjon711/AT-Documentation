@@ -27,5 +27,30 @@ To calibrate bowden length to TD-1 device run `AFC_CALIBRATION` and on calibrati
 - To manually grab TD and color for a lane use [AFC_GET_TD_ONE_DATA](klipper/internal/td1.md#AFC_functions.afcFunction.cmd_AFC_GET_TD_ONE_DATA) which will create a popup to allow selection of which lane to grab the data from.
 - If filament is loaded to the toolhead when printer is restarted/first turned on, TD-1 will be in a error state. To fix this unload filament from toolhead with [TOOL_UNLOAD](klipper/internal/lane.md#AFC.afc.cmd_TOOL_UNLOAD) and then run [AFC_RESET_TD1](klipper/internal/td1.md#AFC_functions.afcFunction.cmd_AFC_RESET_TD1) with correct id to reset TD-1. AFC will wait up to 30 seconds for reset to happen and will display message if reset was successful or unsuccessful.
 
+## Troubleshooting
+- If you think that your TD-1 is connected but AFC still cannot see your device, navigate to `http://<printter_ip>/machine/td1_data` to verify that you TD-1 device shows up here or not.
 
-# TODO: add seperate note that you dont need a TD-1 to upload data to lane_data endpoint for third parties to grab info
+Example of moonraker detecting TD-1:
+```
+{
+  "result": {
+    "status": "ok",
+    "devices": {
+      "E6625877D318C430": {
+        "td": null,
+        "color": null,
+        "scan_time": null
+      }
+    }
+  }
+}
+```
+
+- If TD-1 does not show up in query, SSH into printer and list USB serial devices with
+```
+ls /dev/serial/by-id/*
+```
+If TD-1 is detected you should see something like the following print out.
+```
+/dev/serial/by-id/usb-AJAX_3D_TD-1_E6625877D318C430-if00
+```
