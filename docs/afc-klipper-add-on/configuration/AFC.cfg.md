@@ -210,6 +210,14 @@ test_extrude_amt: 10
 #    Amount in mm to extrude when use the `AFC_TEST_LANES` calibration
 #    command. This is typically sufficient when using the `POOP` macro;
 #    however, it may need to be adjusted otherwise.
+capture_td1_when_loaded: False
+#    Default: False
+#    When set to True and TD-1 device is correctly configured in moonraker, 
+#    when filament is loaded into a lane AFC will move filament to TD-1 device
+#    to capture TD and color.
+#
+#    This is a global setting and can be overridden in unit specific sections
+#    eg. [AFC_Boxturtle ], [AFC_NightOwl ] etc.
 ```
 
 The next part of the `[AFC]` section contains the configuration for the AFC macros. These macros are used to control the
@@ -305,6 +313,11 @@ disable_unload_filament_remapping: False
 #    Default: False
 #    Set to true to disable remapping UNLOAD_FILAMENT macro to TOOL_UNLOAD 
 #    macro.
+capture_td1_data: False
+#    Default: False
+#    When set to True TD-1 device is correctly configured in moonraker, AFC will 
+#    capture TD and color per lane upon first boot if hub is clear and a lane
+#    is not loaded to toolhead.
 ```
 
 ## [delayed_gcode welcome] Section

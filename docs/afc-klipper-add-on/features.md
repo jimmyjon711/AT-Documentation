@@ -296,3 +296,45 @@ Runout detection can be turned off while printing by disabling sensor in web gui
 
 Example of runout enabled/disabled:
 ![runout_enabled_disabled](../assets/images/runout_switch.png)
+
+## TD-1 Support
+AFC has the ability to grab data from TD-1 devices that are connected to your printer. More information about this and setting it up can be found under [TD-1](td1.md) section.
+
+## Exposing Lane Data for Third-Parties
+AFC will store lane data in moonrakers database at `<ip_address>/server/database/item?namespace=lane_data` so that third-parties (like orca once support is added) can read this data and know what color, TD(if enabled), mapping, material filament, etc. is in each lane.
+
+Endpoint returns all lanes in system in a json format like the following:
+```
+{
+    "namespace": "lane_data",
+    "key": null,
+    "value": {
+        "lane1": {
+            "color": "#122B44",
+            "td": 4.0,
+            "material": "ASA",
+            "bed_temp": 105,
+            "nozzle_temp":245,
+            "scan_time": "2025-09-14T03:13:27.189383Z",
+            "lane": "1"
+        },
+        "lane2": {
+            "color": "#122B44",
+            "td": 4.0,
+            "material": "ASA",
+            "bed_temp": 105,
+            "nozzle_temp":245,
+            "scan_time": "2025-09-14T03:13:27.189383Z",
+            "lane": "0"
+        }
+    }
+}
+```
+
+- Color: Current color filament loaded in lane, if filament was scanned with TD-1 then TD-1 scanned color is returned  
+- TD : Transmission distance if TD-1 is connected and enabled in system  
+- Material: Material from spoolman or when manually entered with [SET_MATERIAL](klipper/internal/spool.md#SET_MATERIAL) macro  
+- Bed Temp: Bed temperature pulled from spoolman data  
+- Nozzle Temp: Nozzle temperature pulled from spoolman data  
+- Scan Temp: Only is populated if TD-1 is connected and enabled in system and filament was scanned  
+- Lane: Current tool mapping for lane/slot. eg. T0/T1/T2/etc.  
