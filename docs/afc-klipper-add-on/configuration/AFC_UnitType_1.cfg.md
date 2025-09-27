@@ -103,7 +103,11 @@ park_dist: 10
 led_index: AFC_Indicator:1
 #    Default: None
 #    LED index of lane in chain of lane LEDs. This should reference
-#    a defined LED in the `[AFC_Indicator]` section. 
+#    a defined LED in the `[AFC_Indicator]` section.
+#
+#    Index can have multiple entries in a comma separated list and range values
+#    also are allowed
+#    eg. AFC_Indicator_4:1,2,3,4, 6-9, 11-14, 16-18
 afc_motor_rwd: Turtle_1:MOT1_RWD
 #    Reverse pin on MCU for spoolers (N20 motors).
 afc_motor_fwd: Turtle_1:MOT1_FWD

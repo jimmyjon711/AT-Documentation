@@ -1,17 +1,13 @@
 ## Overview 
-AFC has the ability to grab data from multiple TD-1 devices that are connected to your printer. TD-1 devices can be connected inline with your PTFE tubes to capture data from all lanes, or multiple TD-1's can be added to capture data from specific units. AFC can also be setup to capture TD-1 data once filament is inserted into a lane and/or during startup PREP routine. Once this data is captured it can be sent to moonraker API to allow third-parties (like orca once support is added) to read what color, TD, mapping, material filament, etc. is in each lane.
+AFC has the ability to grab data from multiple TD-1 devices that are connected to your printer. TD-1 devices can be connected inline with your PTFE tubes to capture data from all lanes, or multiple TD-1's can be added to capture data from specific units. AFC can also be setup to capture TD-1 data once filament is inserted into a lane and/or during startup PREP routine. Once this data is captured it will be sent to moonraker database to allow third-parties (like orca once support is added) to read what color, TD, mapping, material filament, etc. is in each lane, learn more about this feature [here](features.md#exposing-lane-data-for-third-parties)
 
 ## Prerequisite
 TD-1 firmware version on at least version 2.0.0
 
 ## Moonraker Setup
-To communicate correctly with TD-1 devices, moonraker needs to be updated to at least vxxx.xx.xx and the following need's to be added to moonraker.conf file
+To communicate correctly with TD-1 devices, moonraker needs to be updated to at least **v0.9.3-116-gb11a7915** and the following need's to be added to moonraker.conf file
 ```
 [td1]
-```
-To enable endpoint to allow third-parties to grab data add the following to moonraker.conf file. A TD-1 device not needed for this to work as AFC will push to this endpoint regardless.
-```
-[lane_data]
 ```
 Once added, restart printer. Once restarted and TD-1 device is connected you will see `Found TD-1 device connected to printer` print out in your console if everything is working correctly.
 
@@ -28,7 +24,7 @@ To calibrate bowden length to TD-1 device run `AFC_CALIBRATION` and on calibrati
 - If filament is loaded to the toolhead when printer is restarted/first turned on, TD-1 will be in a error state. To fix this unload filament from toolhead with [TOOL_UNLOAD](klipper/internal/lane.md#AFC.afc.cmd_TOOL_UNLOAD) and then run [AFC_RESET_TD1](klipper/internal/td1.md#AFC_functions.afcFunction.cmd_AFC_RESET_TD1) with correct id to reset TD-1. AFC will wait up to 30 seconds for reset to happen and will display message if reset was successful or unsuccessful.
 
 ## Troubleshooting
-- If you think that your TD-1 is connected but AFC still cannot see your device, navigate to `http://<printter_ip>/machine/td1_data` to verify that you TD-1 device shows up here or not.
+- If you think that your TD-1 is connected but AFC still cannot see your device, navigate to `http://<printter_ip>/machine/td1/data` to verify that you TD-1 device shows up here or not.
 
 Example of moonraker detecting TD-1:
 ```
@@ -46,10 +42,11 @@ Example of moonraker detecting TD-1:
 }
 ```
 
-- If TD-1 does not show up in query, SSH into printer and list USB serial devices with
+If TD-1 does not show up in query, SSH into printer and list USB serial devices with:
 ```
 ls /dev/serial/by-id/*
 ```
+
 If TD-1 is detected you should see something like the following print out.
 ```
 /dev/serial/by-id/usb-AJAX_3D_TD-1_E6625877D318C430-if00
