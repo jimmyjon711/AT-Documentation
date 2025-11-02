@@ -87,11 +87,11 @@ If TD-1 is detected you should see something like the following print out.
 /dev/serial/by-id/usb-AJAX_3D_TD-1_E6625877D318C430-if00
 ```
 
-### TD1 shows up as waveshare whe running lsusb
+### TD1 shows up as waveshare when running lsusb
 When first powering on your printer, if your TD1 shows up as waveshare when doing `lsusb` then you may need to add a boot delay by performing the following steps:  
 !!! note  
 
-    If you have multiple block when running `lsblk` you may need to unplug your TD1 device and run `lsblk` again to see which block disappears as this would be the block for your TD1. If you have unplugged your TD1 while your printer is on, you will need to shutdown printer, plug TD1 back into your printer and turn back on for these steps to be performed.
+    If you have multiple blocks when running `lsblk` you may need to unplug your TD1 device and run `lsblk` again to see which block disappears as this would be the block for your TD1. If you have unplugged your TD1 while your printer is on, you will need to shutdown printer, plug TD1 back into your printer and turn back on for these steps to be performed.
 
 1. From as fresh power up, SSH into printer  
 1. Run `lsblk` to find block to mount, eg `/dev/sdb1`.  
@@ -124,4 +124,4 @@ When first powering on your printer, if your TD1 shows up as waveshare when doin
     ```
     /dev/serial/by-id/usb-AJAX_3D_TD-1_E6625877D318C430-if00
     ```
-1. If your device is still not showing up as a AJAX usb device then redo steps 4-8 and increase sleep( currently set to 10 ) by 5 second increments until it shows up. 
+1. If your device is still not showing up as a AJAX usb device then redo steps 4-8 and increase sleep( currently set to 10 ) by 5-second increments until it shows up. 
